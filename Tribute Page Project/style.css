@@ -1,0 +1,237 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+#main {
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+@media (max-width: 380px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: small;
+  }
+
+  body {
+    font-size: 75%;
+  }
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+  padding-top: 15px;
+  font-size: 1.2em;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: #585772;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.content {
+  font-size: 1.4em;
+  color: #585772;
+  width: 100%;
+}
+
+#firstname {
+  color: #fdb827;
+  width: 100%;
+  display: block;
+}
+
+#lastname {
+  color: #552583;
+  display: block;
+}
+
+#kobe {
+  font-size: 5.1vw;
+  font-weight: 500;
+  padding-top: 50px;
+  letter-spacing: 0.9em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 100%;
+  margin-bottom: 30px;
+  padding-left: 16px;
+  margin-top: 100px;
+}
+
+#date {
+  padding: 0 50px 15px;
+  font-style: italic;
+  text-align: center;
+}
+
+.nickname {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+
+.content p {
+  text-align: center;
+  font-size: 2vw;
+}
+
+#img-div {
+  display: flex;
+  justify-content: center;
+}
+
+#image {
+  max-width: 100%;
+}
+
+#img-caption {
+  margin-top: 5px;
+  color: black;
+}
+
+#tribute-info {
+  display: flex;
+  justify-content: center;
+}
+
+#tribute-info p {
+  margin: 40px 50px 10px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2em;
+  width: 60%;
+}
+
+.button {
+  padding: 25px 0px 60px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-link {
+  border: 2px solid purple;
+  border-radius: 15px;
+  background: transparent;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.btn-link a {
+  text-decoration: none;
+  color: purple;
+}
+
+#img-caption {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  width: 100%;
+  padding: 0 2em;
+}
+
+#related-articles {
+  text-align: center;
+  font-size: 3.5em;
+  margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #585772;
+  border: 2px solid #585772;
+  border-radius: 15px;
+  background-color: transparent;
+  padding: 15px;
+  margin: 15px;
+  width: 55%;
+}
+
+.box h4 {
+  text-align: center;
+  font-size: 1.5em;
+  color: black;
+  width: 100%;
+  padding-top: 2px;
+}
+
+.box p {
+  text-align: center;
+  font-size: 1em;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.btn-article a {
+  text-decoration: none;
+  color: white;
+  font-weight: 550;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.btn-article {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-article button {
+  background-color: rgb(129, 66, 129);
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+hr {
+  width: 75%;
+  margin: auto;
+}
