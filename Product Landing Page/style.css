@@ -46,7 +46,7 @@ video {
 }
 
 .logo-container {
-  max-width: 20px;
+  max-width: 27px;
   padding-top: 1em;
   padding-bottom: 1em;
 }
@@ -116,6 +116,7 @@ video {
 .show-text {
   color: white;
   font-family: "PT Sans", sans-serif;
+  margin-left: 42px;
 }
 
 @keyframes fadeIn {
@@ -158,6 +159,7 @@ video {
 
 .airpods-img {
   max-width: 600px;
+  margin-right: -40px;
 }
 
 /* REVIEWS PAGE */
@@ -245,6 +247,10 @@ input {
   outline: none;
 }
 
+.news-content h2 {
+  padding: 0 1rem;
+}
+
 #email {
   width: 100%;
   border: none;
@@ -278,28 +284,46 @@ input {
     padding-top: 12rem;
   }
 
+  .show-text {
+    margin-left: 0;
+  }
+
+  .airpods-img {
+    margin-right: 0;
+  }
+
   .show-text h1 {
     font-size: 6rem;
     line-height: 6rem;
   }
 
-  .container-a {
-    display: flex;
-    flex-direction: column;
-  }
-
   .nav-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1rem;
   }
 
   #order-btn {
     margin: 0;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
   }
 
   .logo-container {
-    display: none;
+    padding-bottom: 0;
+    padding-top: 1.5em;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 0.5em;
+  }
+
+  .container-a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }
