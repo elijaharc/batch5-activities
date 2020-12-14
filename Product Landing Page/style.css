@@ -264,6 +264,8 @@ input {
   font-weight: bold;
   background-color: rgb(26, 86, 197);
   cursor: pointer;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 0.5px;
 }
 
 /* Footer */
