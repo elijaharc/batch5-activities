@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <main>
+      <div id="title">
+        <h1>This is the survey form title</h1>
+      </div>
+      <div id="description">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+          minus cupiditate ut ex? Consequatur, esse dolore enim quis sed porro.
+        </p>
+      </div>
+      <div class="container">
+        <form id="survey-form">
+          <label for="name" id="name-label">Name</label>
+          <input type="text" id="name" placeholder="Enter name here" />
+          <label for="email" id="email-label">Email</label>
+          <input type="email" id="email" placeholder="Enter email here" />
+          <label for="number" id="number-label">Number</label>
+          <input
+            type="number"
+            name="Number"
+            id="number"
+            min="1"
+            max="10"
+            placeholder="Enter number"
+          />
+
+          <label for="dropdown">Choose one of the following:</label>
+
+          <select id="dropdown">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select>
+
+          <label id="rd">
+            <input type="radio" name="rd" value="Definitely" />Definitely<br />
+            <input type="radio" name="rd" value="Not sure" />Not sure<br />
+            <input type="radio" name="rd" value="Maybe" />Maybe<br />
+          </label>
+
+          <div class="rowTab">
+            <div class="labels">
+              <label for="preferences">Do you have any known medical issues? <br>(select all that apply):</label>
+            </div>
+                <ul id="preferences" style="list-style: none;">
+                  <li class="checkbox"><label><input name="prefer" value="1" type="checkbox" class="userRatings">Asthma</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="2" type="checkbox" class="userRatings">Parkinsons Disease</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="3" type="checkbox" class="userRatings">Heart Failure</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="4" type="checkbox" class="userRatings">HIV</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="5" type="checkbox" class="userRatings">Other</input></label></li>
+                </ul>
+          </div>
+
+          <label for="w3review">Review of W3Schools:</label>
+
+          <textarea id="w3review" name="w3review" rows="4" cols="50">
+        Leave any additional comments here
+          </textarea>
+
+          <label for="submit"></label>
+          <button type="submit" form="survey-form" value="Submit" id="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
