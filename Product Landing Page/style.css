@@ -258,13 +258,12 @@ input {
 
 #submit {
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   width: auto;
   color: white;
   font-weight: bold;
   background-color: rgb(26, 86, 197);
   cursor: pointer;
-  text-transform: uppercase;
 }
 
 /* Footer */
