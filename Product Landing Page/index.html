@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Product Landing Page</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="nav-bar">
+        <div class="container-a">
+          <div class="logo-container">
+            <a href="#"
+              ><img src="./images/apple-512.png" alt="Apple logo"
+            /></a>
+          </div>
+
+          <ul class="nav-container">
+            <li><a class="nav-link" href="#">Home</a></li>
+            <li><a class="nav-link" href="#review-page">Reviews</a></li>
+            <li>
+              <a
+                class="nav-link"
+                href="https://www.apple.com/shop"
+                target="_blank"
+                >Shop</a
+              >
+            </li>
+
+            <div class="nav-btn">
+              <button id="order-btn"><a href="#">Order Now</a></button>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!--this nav bar should always be at the top of the viewport-->
+    <section id="showcase">
+      <div class="container">
+        <div class="show-text">
+          <h1>AirPods Pro</h1>
+          <p>Sound redefined. Hear the future.</p>
+          <div class="demo-link">
+            <a
+              href="https://www.youtube.com/watch?v=OCZVRJ5uZxc"
+              class="btn"
+              target="_blank"
+              >Watch the Demo &#9658;</a
+            >
+          </div>
+        </div>
+
+        <div class="airpods-img">
+          <img src="./images/airpods-photo.jpg" alt="Photo of Airpods Pro" />
+        </div>
+      </div>
+      <!-- <img src="./images/airpods.jpg" alt="Airpods Pro"> -->
+    </section>
+
+    <section id="review-page">
+      <div class="overlay">
+        <div class="review-content">
+          <h2>Hear what they are saying.</h2>
+
+          <video id="video" src="./images/airpods-review.mp4" controls></video>
+
+          <p>
+            Watch
+            <a
+              href="https://www.youtube.com/watch?v=PDdNGsqi1Ho&t=31s"
+              target="_blank"
+              >Dave Lee</a
+            >
+            review the new Airpods Pro
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter-page">
+      <div class="overlay">
+        <div class="news-content">
+          <h2>Subscribe to our Newsletter</h2>
+
+          <div id="form">
+            <form action="./form.html" method="get">
+              <label for="email">Get updates about the latest products</label
+              ><br />
+              <br />
+              <div class="formbar">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter valid email"
+                />
+              </div>
+              <br />
+
+              <input id="submit" type="submit" value="Submit" />
+            </form>
+          </div>
+        </div>
+        <footer class="footer">
+          <p>Elijah Arcedera &#169; | 2020</p>
+        </footer>
+        <br />
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+/* add at least one media query */
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+video {
+  width: 60%;
+}
+
+/* NAV BAR CSS */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+}
+
+.logo-container {
+  max-width: 20px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.container-a {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(27, 27, 27);
+  box-shadow: 0 0 5em 0 rgba(7, 5, 5, 0.164);
+  border-bottom: 1px solid rgba(99, 99, 99, 0.288);
+}
+
+#nav-bar ul {
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+#nav-bar li {
+  color: white;
+  letter-spacing: 0.03rem;
+  margin: 0 1em;
+}
+
+#nav-bar li:hover {
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
+}
+
+#order-btn a {
+  text-decoration: none;
+  color: white;
+  letter-spacing: 0.8px;
+}
+
+#order-btn {
+  background-color: rgb(26, 86, 197);
+  border-radius: 50px;
+  border-style: none;
+  font-size: 1em;
+  height: 30px;
+  width: 120px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+#order-btn:hover {
+  background-color: rgb(17, 73, 177);
+  cursor: pointer;
+}
+
+/* SHOWCASE CONTENT */
+
+#showcase {
+  background-color: black;
+}
+
+#showcase .container {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.show-text {
+  color: white;
+  font-family: "PT Sans", sans-serif;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.show-text p,
+.demo-link {
+  font-size: 1.5rem;
+  animation: fadeIn ease 7.5s;
+  -webkit-animation: fadeIn ease 7.5s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
+}
+
+.show-text h1 {
+  font-size: 3rem;
+  line-height: 7.5rem;
+}
+
+@media (max-width: 1110px) {
+  #showcase .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12rem;
+  }
+
+  .show-text h1 {
+    font-size: 6rem;
+    line-height: 6rem;
+  }
+
+  .container-a {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  #order-btn {
+    margin: 0;
+    margin-top: 0.5rem;
+  }
+
+  .logo-container {
+    display: none;
+  }
+}
