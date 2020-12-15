@@ -1,0 +1,538 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgb(226, 226, 226);
+  text-align: center;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+/* NAV BAR CSS */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+}
+
+.logo-container {
+  max-width: 27px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.container-a {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(27, 27, 27);
+  box-shadow: 0 0 5em 0 rgba(7, 5, 5, 0.164);
+  border-bottom: 1px solid rgba(99, 99, 99, 0.288);
+}
+
+#nav-bar ul {
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+#nav-bar li {
+  color: white;
+  letter-spacing: 0.03rem;
+  margin: 0 1em;
+}
+
+#nav-bar li:hover {
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
+}
+
+#order-btn a {
+  text-decoration: none;
+  color: white;
+  letter-spacing: 0.8px;
+}
+
+#order-btn {
+  background-color: rgb(26, 86, 197);
+  border-radius: 50px;
+  border-style: none;
+  font-size: 1em;
+  height: 30px;
+  width: 120px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+#order-btn:hover {
+  background-color: rgb(17, 73, 177);
+  cursor: pointer;
+}
+
+/* FORM CONTENT */
+
+#title h1 {
+  color: black;
+  margin-top: 7.5rem;
+  text-align: center;
+  font-size: 5rem;
+  width: 100%;
+}
+
+#title h2 {
+  color: black;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+#description p {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#body {
+  padding: 30px;
+  border-radius: 10px;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.562);
+  font-size: 20px;
+  color: white;
+  box-shadow: 3px 3px 1.5px #888888a4;
+  width: 750px;
+}
+
+#survey-form p {
+  margin-bottom: 0.5rem;
+}
+
+#survey-form input {
+  margin-bottom: 0.35rem;
+}
+
+#name {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+#email {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+}
+#number {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+#dropdown {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 0.5rem;
+}
+
+.radio-buttons {
+  margin-bottom: 0.5rem;
+}
+
+.checkboxes {
+  margin-bottom: 0.5rem;
+}
+
+.checkboxes input {
+  margin-right: 0.3rem;
+}
+
+.comment-label {
+  margin-bottom: 0.5rem;
+}
+
+#comment {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-family: "Ubuntu", sans-serif;
+}
+
+#submit {
+  width: 100px;
+  padding: 5px 5px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  background-color: rgb(226, 226, 226);
+  cursor: pointer;
+}
+
+hr {
+  width: 50%;
+  margin: 1em auto;
+}
+
+/* Media Queries */
+
+@media (max-width: 1110px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #description p {
+    font-size: 1.1rem;
+  }
+
+  .flex-container p {
+    margin-bottom: 2rem;
+  }
+
+  #showcase .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12rem;
+  }
+
+  .show-text {
+    margin-left: 0;
+  }
+
+  .airpods-img {
+    margin-right: 0;
+  }
+
+  .show-text h1 {
+    font-size: 6rem;
+    line-height: 6rem;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  #order-btn {
+    margin: 0;
+  }
+
+  .logo-container {
+    padding-bottom: 0;
+    padding-top: 1.5em;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 0.5em;
+  }
+
+  .container-a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  body {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title-container {
+    margin: 0 7rem;
+  }
+
+  #title h1 {
+    font-size: 4rem;
+  }
+
+  #description p {
+    font-size: 1.1rem;
+  }
+
+  .flex-container p {
+    margin-bottom: 2rem;
+  }
+
+  #body {
+    width: 80%;
+  }
+
+  #showcase .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12rem;
+  }
+
+  .show-text {
+    margin-left: 0;
+  }
+
+  .airpods-img {
+    margin-right: 0;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  #order-btn {
+    margin: 0;
+  }
+
+  .logo-container {
+    padding-bottom: 0;
+    padding-top: 1.5em;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 0.5em;
+  }
+
+  .container-a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  body {
+    margin-top: 1rem;
+  }
+}
+
+/* @media (max-width: 600px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-container p {
+    margin-bottom: 2rem;
+  }
+
+  .flex-container h1,
+  h2 {
+    margin-right: 5rem;
+    margin-left: 5rem;
+  }
+
+  #title h1 {
+    font-size: 3rem;
+  }
+
+  #title h2 {
+    font-size: 1.9rem;
+  }
+
+  #description p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  #body {
+    margin-bottom: 1rem;
+  }
+} */
+
+/* .main {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 900px;
+  width: 40%;
+}
+
+input {
+  padding-left: 0.4rem;
+}
+
+#title {
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgb(27, 27, 27);
+}
+
+#title h1 {
+  font-family: "PT Sans", sans-serif;
+  font-size: 5rem;
+}
+
+.main p {
+  text-align: center;
+}
+
+#name-label,
+#email-label,
+#number-label {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#name,
+#email,
+#number {
+  height: 2rem;
+  width: 15rem;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+#description p {
+  margin: 0.5rem 0;
+}
+
+hr {
+  margin: 3rem 0;
+}
+
+.how-did,
+.scale {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#how-label,
+#radio-btn {
+  display: block;
+  font-size: 1.8rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#dropdown {
+  height: 2.2rem;
+}
+
+.radio-choices {
+  display: flex;
+  justify-content: center;
+}
+
+#male,
+#female,
+#other {
+  margin-left: 2rem;
+} */
+
+/* @media (max-width: 1110px) {
+  #showcase .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .show-text {
+    margin-left: 0;
+  }
+
+  .airpods-img {
+    margin-right: 0;
+  }
+
+  .show-text h1 {
+    font-size: 2.2rem;
+    line-height: 2.5rem;
+    padding-bottom: 2rem;
+  }
+
+  #showcase .container {
+    padding-top: 0;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  #order-btn {
+    margin: 0;
+    /* margin-top: 0.5rem; */
+/* }
+
+  .logo-container {
+    padding-bottom: 0;
+    padding-top: 1.5em;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 0.5em;
+  }
+
+  .container-a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  } */

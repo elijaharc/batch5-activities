@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="survey-style.css" />
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="nav-bar">
+        <div class="container-a">
+          <div class="logo-container">
+            <a href="./index.html"
+              ><img src="./images/apple-512.png" alt="Apple logo"
+            /></a>
+          </div>
+
+          <ul class="nav-container">
+            <li><a class="nav-link" href="./index.html">Home</a></li>
+            <li><a class="nav-link" href="./index.html#review-page">Reviews</a></li>
+            <li>
+              <a
+                class="nav-link"
+                href="https://www.apple.com/shop"
+                target="_blank"
+                >Shop</a
+              >
+            </li>
+
+            <div class="nav-btn">
+              <button id="order-btn"><a href="#">Order Now</a></button>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+<div class="flex-container">
+    <div class="title-container">
+        <div id="title">
+            <h1>AirPods Pro</h1>
+            <br>
+            <h2>Product Satisfaction Survey</h2>
+        </div>
+        <div id="description">
+            <p>
+              Thank you for taking the time to fill out this survey. We appreciate your feedback.
+            </p>
+        </div>
+    </div>
+    
+
+    <div id="body">
+
+    <form id="survey-form">
+    
+    <label id="name-label" for="name">
+    <p>Name:</p>
+    </label>
+    
+    <input id="name" type="text" placeholder="Enter Your Name" required>
+  
+  
+    <label id="email-label" for="email">
+    <p>Email:</p>
+    </label>
+  
+    <input id="email" type="email" placeholder="Enter Your Email" required>
+    
+        <label id="number-label" for="number">
+        <p>Age:</p>
+        </label>
+    
+    <input id="number" type="number" placeholder="Enter Your Age" min="13" max="100" required>
+
+    <label for="dropdown" id="dropdown-label"><p>How did you hear about our product?</p></label>
+  
+    <select id="dropdown">
+    
+    <option selected="selected" style="display: none;">Please select one:</option>
+                  <option value="Social Media">Social Media</option>
+                  <option value="Relatives or Friends">Relatives or Friends</option>
+                  <option value="Online advertisements">Online advertisements</option>
+                  <option value="Search engine">Search engine</option>
+                  <option value="TV">TV</option>
+                  <option value="Magazine or Newspaper">Magazine or Newspaper</option>
+                  <option value="Apple Store">Apple Store</option>
+                  <option value="Others">Others</option>
+    
+    </select>
+
+    <hr>
+
+  
+    <div class="radio-buttons"> 
+        <p>How likely are you to recommend the AirPods Pro?</p>
+  
+        <input type="radio" id="very-likely" name="gender" value="male">
+        <label for="very-likely">Very Likely</label><br>
+        <input type="radio" id="likely" name="gender" value="female">
+        <label for="likely">Likely</label><br>
+        <input type="radio" id="neutral" name="gender" value="other">
+        <label for="neutral">Neutral</label><br>
+        <input type="radio" id="unlikely" name="gender" value="other">
+        <label for="unlikely">Unlikely</label><br>
+        <input type="radio" id="very-unlikely" name="gender" value="other">
+        <label for="very-unlikely">Very unlikely</label>
+    </div>
+
+    <hr>
+
+    <p>Which of the following words would you use to describe our products? Select all that apply.</p>
+
+    <div class="checkboxes"> 
+        <input type="checkbox" name="describes" value="1">Reliable</input>
+        <br>
+        <input type="checkbox" name="describes" value="2">High quality</input>
+        <br>
+        <input type="checkbox" name="describes" value="3">Useful</input>
+        <br>
+        <input type="checkbox" name="describes" value="4">Unique</input>
+        <br>
+        <input type="checkbox" name="describes" value="5">Good value for money</input>
+        <br>
+        <input type="checkbox" name="describes" value="6">Overpriced</input>
+        <br>
+        <input type="checkbox" name="describes" value="8">Impractical</input>
+        <br>
+        <input type="checkbox" name="describes" value="8">Ineffective</input>
+        <br>
+        <input type="checkbox" name="describes" value="9">Poor quality</input>
+        <br>
+        <input type="checkbox" name="describes" value="10">Unreliable</input>
+        <br>
+    </div>
+
+    <hr>
+   
+    <div class="comment-label"><label for="comment">Do you have any other comments, questions, or concerns?</label></div>
+
+    <textarea id="comment" rows="4" cols="40">Add Your Comment Here</textarea>
+    <br>
+    <input id="submit" type="submit" value="Submit">
+                
+    </form>
+    </div>
+</div>
+    
+
+    <!-- <div class="main">
+      <div id="title">
+        <h1>AirPods Pro</h1>
+        <br>
+        <h2>Product Satisfaction Survey</h2>
+      </div>
+      <div id="description">
+        <p>
+          Thank you for taking the time to fill out this survey. We appreciate your feedback.
+        </p>
+        <br>
+        <br>
+      </div>
+      <div class="form-container">
+        <form id="survey-form">
+          <label for="name" id="name-label">Name</label><br>
+          <input type="text" id="name" placeholder="Enter name here" /><br>
+          <label for="email" id="email-label">Email</label><br>
+          <input type="email" id="email" placeholder="Enter email here" /><br>
+          <label for="number" id="number-label">Age</label><br>
+          <input
+            type="number"
+            name="Number"
+            id="number"
+            min="1"
+            max="100"
+            placeholder="Enter age"
+          /><br>
+
+          <hr>
+
+            <div class="how-did">
+                <label id="how-label" for="dropdown">How did you hear about our product?</label><br>
+                <select id="dropdown">
+                  <option selected="selected" style=" display: none;">Please select one:</option>
+                  <option value="social-media">Social Media</option>
+                  <option value="relative-or-friends">Relatives or Friends</option>
+                  <option value="online-ads">Online advertisements</option>
+                  <option value="search-engine">Search engine</option>
+                  <option value="TV">TV</option>
+                  <option value="magazine-or-newspaper">Magazine or Newspaper</option>
+                  <option value="apple-store">Apple Store</option>
+                  <option value="others">Others</option>
+                </select>
+                <br>
+            </div>
+
+            <hr>
+          
+            <div class="scale">
+                <label id="radio-btn" for="radio">How likely are you to recommend the AirPods Pro?</label>
+            </div>
+            <div class="radio-choices">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Definitely</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Not sure</label><br>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+                
+            
+          
+ <br>
+
+          <div class="rowTab">
+            <div class="labels">
+              <label for="preferences">Do you have any known medical issues? <br>(select all that apply):</label>
+            </div>
+                <ul id="preferences" style="list-style: none;">
+                  <li class="checkbox"><label><input name="prefer" value="1" type="checkbox" class="userRatings">Asthma</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="2" type="checkbox" class="userRatings">Parkinsons Disease</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="3" type="checkbox" class="userRatings">Heart Failure</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="4" type="checkbox" class="userRatings">HIV</input></label></li>
+                  <li class="checkbox"><label><input name="prefer" value="5" type="checkbox" class="userRatings">Other</input></label></li>
+                </ul>
+          </div>
+
+          <label for="w3review">Review of W3Schools:</label>
+
+          <textarea id="w3review" name="w3review" rows="4" cols="50">
+        Leave any additional comments here
+          </textarea>
+
+          <label for="submit"></label>
+          <button type="submit" form="survey-form" value="Submit" id="submit">Submit</button>
+        </form>
+      </div>
+  </div> -->
+    
+  </body>
+</html>

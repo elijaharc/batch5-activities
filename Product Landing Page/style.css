@@ -206,6 +206,16 @@ video {
   width: 80%;
 }
 
+.leave-review h6 {
+  font-size: 1.2rem;
+  margin-top: 3rem;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 180px;
+  padding: 0.2rem 0.2rem;
+  background-color: rgba(88, 88, 88, 0.301);
+}
+
 /* Newsletter page */
 
 #newsletter-page {
@@ -267,6 +277,10 @@ input {
   cursor: pointer;
   font-family: "Ubuntu", sans-serif;
   letter-spacing: 0.5px;
+}
+
+.formbar {
+  width: 300px;
 }
 
 /* Footer */
