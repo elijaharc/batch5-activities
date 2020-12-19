@@ -1,5 +1,3 @@
-// Give each button a letiable
-
 // Number buttons
 let oneBtn = document.getElementById("calc-one");
 let twoBtn = document.getElementById("calc-two");
@@ -37,6 +35,11 @@ let updateDisplayVal = function (clickObj) {
   displayVal += btnText;
   displayValElement.innerText = displayVal;
 };
+
+// Give each number button event listener and then show it on display screen
+for (let i = 0; i < calcNumBtns.length; i++) {
+  calcNumBtns[i].addEventListener("click", updateDisplayVal, false);
+}
 
 let performOperation = function (clickObj) {
   let operator = clickObj.target.innerText;
@@ -86,11 +89,6 @@ let performOperation = function (clickObj) {
   }
 };
 
-// Give each number button event listener and then show it on display screen
-for (let i = 0; i < calcNumBtns.length; i++) {
-  calcNumBtns[i].addEventListener("click", updateDisplayVal, false);
-}
-
 // Give each operation button event listener then do operation
 for (let i = 0; i < calcOperatorBtns.length; i++) {
   calcOperatorBtns[i].addEventListener("click", performOperation, false);
@@ -118,5 +116,3 @@ decimalBtn.onclick = function () {
   if (!displayVal.includes(".")) displayVal += ".";
   displayValElement.innerText = displayVal;
 };
-
-// Research on SWITCH statements
