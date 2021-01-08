@@ -1,4 +1,4 @@
-# Welcome to my GitHub Repo! Here are some of my work.
+# Welcome to my GitHub Repo! Here are some of my works.
 
 # Homeworks:
 
