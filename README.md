@@ -1,4 +1,4 @@
-# Welcome to my GitHub Repo!
+# Welcome to my GitHub Repo! Here are some of my work.
 
 -[Letter Activity](/Activity#20Letter#20Homework/ActivityLetter.html)
 
@@ -9,3 +9,5 @@
 -[Coding Challenge 1: BMI Calculator](https://jsfiddle.net/sopnw5gk/9/)
 
 -[Coding Challenge 2: Playing Cards (Part 1)](https://jsfiddle.net/ajgk1z96/)
+
+-[JavaScript Calculator](/Calculator/index.html)
