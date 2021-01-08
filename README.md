@@ -1,4 +1,5 @@
-# batch5-activities
+# Welcome to my GitHub Repo!
+
 -[Letter Activity](/Activity#20Letter#20Homework/ActivityLetter.html)
 
 -[Best Practice Homework](/Best#20Practice#20Homework/index.html)
