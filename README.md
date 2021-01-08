@@ -16,7 +16,7 @@
 
 -[Survey Form Page](https://elijaharc.github.io/batch5-activities/Product%20Landing%20Page/survey-form.html)
 
--[JavaScript Calculator](https://elijaharc.github.io/batch5-activities/Calculator/index.html)
+-[JavaScript Calculator](https://elijaharc.github.io/batch5-activities/JavaScript%20Calculator/index.html)
 
 -[JavaScript Chessboard Project](https://elijaharc.github.io/batch5-activities/JavaScript%20Chess%20Board%20Project/index.html)
 
