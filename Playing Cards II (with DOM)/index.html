@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Playing Cards Activity</title>
+  </head>
+  <body>
+    <h2 id="screen">Card Dealt: Press the 'Deal card' button</h2>
+    <div id="remainingCards">Remaining Cards:</div>
+    <br />
+    <div id="drawHistory">Draw History:</div>
+    <br />
+    <br />
+    <div>
+      <button id="previous" style="cursor: pointer" onclick="previous()">
+        Previous
+      </button>
+      <button id="next" style="cursor: pointer" onclick="next()">Next</button>
+    </div>
+    <br />
+    <div>
+      <button id="dealCard" style="cursor: pointer">Deal Card</button>
+    </div>
+    <br />
+    <div>
+      <button id="shuffle" style="cursor: pointer">Reshuffle Deck</button>
+    </div>
+    <br />
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- Using code from the previous Playing Cards activity: 1. Implement a "Deal -->
+<!-- Card" button where it pops a card from the deck and shows its name and symbol.
+This button must disable according to the cards left in the deck. 2. Implement a
+"Remaining Cards" view where it should see the number of remaining cards in the
+deck 3. Implement a "Draw History" function where you can see the history of the
+cards dealt 4. Implement "Previous" and "Next" buttons. That will show the past
+cards dealt. These buttons must enabled according to the draw history's length
+5. Implement a "Reshuffle Deck" button that would reshuffle the deck and reset
+the history. The design and representation and responsiveness of the cards in
+the DOM is up to your creativity and imagination. You may use array built-in
+methods. -->
