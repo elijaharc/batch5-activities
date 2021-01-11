@@ -24,7 +24,7 @@
 
 -[Console Quiz](https://elijaharc.github.io/batch5-activities/Console%20Quiz%20Activity/index.html)
 
--[JavaScript Pig Game](https://elijaharc.github.io/batch5-pig-game/index.html)
+-[JavaScript Pig Game](https://elijaharc.github.io/batch5-pig-game/index.html) // Created with (https://github.com/ddcmendoza)
 
 # Coding Challenges:
 
