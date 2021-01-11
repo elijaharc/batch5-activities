@@ -24,6 +24,8 @@
 
 -[Console Quiz](https://elijaharc.github.io/batch5-activities/Console%20Quiz%20Activity/index.html)
 
+-[JavaScript Pig Game](https://elijaharc.github.io/batch5-pig-game/index.html)
+
 # Coding Challenges:
 
 -[Coding Challenge 1: BMI Calculator](https://jsfiddle.net/sopnw5gk/9/)
