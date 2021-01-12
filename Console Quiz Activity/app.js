@@ -59,8 +59,10 @@ let correctAnswer = false;
 function startQuiz() {
   // generate random number to select random array
   let randomNum = Math.floor(Math.random() * questions.length);
+  console.log("");
   console.log(`Here is your question!`);
   console.log(questions[randomNum]);
+  console.log("");
   console.log(`Please select your answer:`);
   // loop to show the items in array
   for (let choice of answerChoices[randomNum]) {
@@ -88,8 +90,10 @@ function startQuiz() {
 
 function nextQuestion() {
   let randomNum = Math.floor(Math.random() * questions.length);
+  console.log("");
   console.log(`Here is your next question!`);
   console.log(questions[randomNum]);
+  console.log("");
   console.log(`Please select your answer:`);
   // loop to show the items in array
   for (let choice of answerChoices[randomNum]) {
@@ -127,51 +131,67 @@ function endGame() {
 function checkAnswer(question, answer) {
   if (question === 0 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 1 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 2 && answer === 2) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 3 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 4 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 5 && answer === 2) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 6 && answer === 2) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 7 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 8 && answer === 2) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 9 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 10 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 11 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 12 && answer === 1) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 13 && answer === 2) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else if (question === 14 && answer === 2) {
     correctAnswer = true;
+    console.log("");
     console.log("That's correct!");
   } else {
     correctAnswer = false;
+    console.log("");
     console.log("Wrong!");
   }
 }
