@@ -105,6 +105,7 @@ function nextQuestion() {
     "Please enter the number of your answer here! To exit game, type 'exit'."
   );
   if (userAnswer === "exit") {
+    console.log("");
     console.log("Thank you!");
     return endGame();
   }
@@ -123,6 +124,7 @@ function nextQuestion() {
     console.log(`You are on a ${streak} point streak! Keep going!`);
   }
   if (userAnswer === "exit") {
+    console.log("");
     console.log("Thank you!");
     return endGame();
   }
