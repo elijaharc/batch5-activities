@@ -1,4 +1,6 @@
+// on load
 alert("Enter startQuiz(); on the console to begin!");
+console.log("Enter startQuiz(); to begin the quiz!");
 
 let questions = [
   "1) What does HTML stand for?",
