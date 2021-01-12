@@ -124,11 +124,6 @@ function nextQuestion() {
   if (streak % 5 === 0) {
     console.log(`You are on a ${streak} point streak! Keep going!`);
   }
-  if (userAnswer === "exit") {
-    console.log("");
-    console.log("Thank you!");
-    return endGame();
-  }
   return nextQuestion();
 }
 
