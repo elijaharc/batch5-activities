@@ -70,9 +70,10 @@ function startQuiz() {
     console.log(choice);
   }
   let userAnswer = prompt(
-    "Please enter the number of your answer here! To exit game, type 'exit'."
+    "Enter the number of your answer here!\n\n(Exit quiz: Type 'exit' or click the 'Cancel' button.)"
   );
-  if (userAnswer === "exit") {
+  if (userAnswer === "exit" || userAnswer === null) {
+    console.log("");
     console.log("Thank you!");
     return endGame();
   }
@@ -102,9 +103,9 @@ function nextQuestion() {
     console.log(choice);
   }
   let userAnswer = prompt(
-    "Please enter the number of your answer here! To exit game, type 'exit'."
+    "Enter the number of your answer here!\n\n(Exit quiz: Type 'exit' or click the 'Cancel' button.)"
   );
-  if (userAnswer === "exit") {
+  if (userAnswer === "exit" || userAnswer === null) {
     console.log("");
     console.log("Thank you!");
     return endGame();
@@ -132,7 +133,7 @@ function nextQuestion() {
 }
 
 function endGame() {
-  alert("Thank you for playing! You may now close the browser.");
+  alert("Thank you for taking the quiz! You may now close the browser.");
   return "Enter startQuiz(); on the console to begin!";
 }
 
