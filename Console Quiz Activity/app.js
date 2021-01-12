@@ -55,6 +55,7 @@ let answerChoices = [
 
 let currentScore = 0;
 let correctAnswer = false;
+let streak = 0;
 
 function startQuiz() {
   // generate random number to select random array
@@ -79,7 +80,8 @@ function startQuiz() {
   // checkAnswer returns 2 values: (question number) & (user's inputted answer number), these 2 values are used to check if the answe is correct
   checkAnswer(parseInt(questions[randomNum]) - 1, parseInt(userAnswer));
   if (correctAnswer) {
-    currentScore += 1;
+    currentScore++;
+    streak++;
     console.log(`Your current score is: ${currentScore}`);
   } else {
     currentScore = 0;
@@ -110,11 +112,15 @@ function nextQuestion() {
   // checkAnswer returns 2 values: (question number) & (user's inputted answer number), these 2 values are used to check if the answe is correct
   checkAnswer(parseInt(questions[randomNum]) - 1, parseInt(userAnswer));
   if (correctAnswer) {
-    currentScore += 1;
+    currentScore++;
+    streak++;
     console.log(`Your current score is: ${currentScore}`);
   } else {
     currentScore = 0;
     console.log(`Uh oh! Your current score is: ${currentScore}`);
+  }
+  if (streak % 5 === 0) {
+    console.log(`You are on a ${streak} point streak! Keep going!`);
   }
   if (userAnswer === "exit") {
     console.log("Thank you!");
