@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
+/* background-color: rgb(238, 238, 210) 
+background-color: rgb(118, 150, 87) */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -31,6 +34,14 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.white {
+  background-color: rgb(255, 255, 255)"
+}
+
+.black {
+  background-color: rgb(118, 150, 87)
 }
 
 #screen {
