@@ -26,6 +26,8 @@
 
 -[JavaScript Pig Game](https://elijaharc.github.io/batch5-pig-game/index.html) // Created with [Dave Mendoza](https://github.com/ddcmendoza)
 
+-[Banking App](https://leocsdev.github.io/banking-app/index.html) // Created with [Leo Santillan](https://github.com/leocsdev)
+
 # Coding Challenges:
 
 -[Coding Challenge 1: BMI Calculator](https://jsfiddle.net/sopnw5gk/9/)
