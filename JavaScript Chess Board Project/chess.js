@@ -1,18 +1,14 @@
-// Board Creation
-
-/// add a global event listener for clicks
-/// have global variables for element_selected and turn(which is the color)
-
-let turn_color = "white";
+// GLOBAL VARIABLES
+let turnColor = "white";
 let turns = [];
-let from_coords = [];
-let from_cell = "";
-let to_coords = [];
-let to_cell = "";
+let fromCoordinates = [];
+let fromCell = "";
+let toCoordinates = [];
+let toCell = "";
 let gameOn = true;
-
 let board = document.getElementById("board");
 
+// CREATING THE BOARD DIVS
 function boardCreation() {
   for (let i = 7; i >= 0; i--) {
     for (let j = 0; j < 8; j++) {
@@ -31,9 +27,10 @@ function boardCreation() {
       board.appendChild(cell);
     }
   }
-  screenDisplay(`${turn_color[0].toUpperCase() + turn_color.slice(1)}'s turn!`);
+  screenDisplay(`${turnColor[0].toUpperCase() + turnColor.slice(1)}'s turn!`);
 }
 
+// ADDING THE PIECES FROM IMAGES
 function createPiece(cell) {
   i = cell.id.split(",")[1];
   j = cell.id.split(",")[0];
@@ -55,7 +52,7 @@ function createPiece(cell) {
     return;
   }
 
-  img = document.createElement("img");
+  let img = document.createElement("img");
   img.setAttribute("data-piece", piece);
   img.classList.add("piece");
   if (i == 0 || i == 1) {
@@ -69,6 +66,7 @@ function createPiece(cell) {
   cell.appendChild(img);
 }
 
+// TO COLOR THE BOARD
 function colorBoard(x, y) {
   if (x % 2 == 0) {
     if (y % 2 == 0) {
@@ -101,7 +99,7 @@ document.body.addEventListener("click", function (e) {
       switchTurn();
       screenDisplay(
         `${
-          turn_color[0].toUpperCase() + turn_color.slice(1)
+          turnColor[0].toUpperCase() + turnColor.slice(1)
         } undid their last move`
       );
     } else {
@@ -111,47 +109,47 @@ document.body.addEventListener("click", function (e) {
 });
 
 function newGame() {
-  turn_color = "white";
+  turnColor = "white";
   turns = [];
-  from_coords = [];
-  from_cell = "";
-  to_coords = [];
-  to_cell = "";
+  fromCoordinates = [];
+  fromCell = "";
+  toCoordinates = [];
+  toCell = "";
   board.innerHTML = "";
   boardCreation();
   gameOn = true;
 }
 
 function nextMove(e) {
-  to_cell = e.target.className === "piece" ? e.target.parentElement : e.target;
-  to_coords = to_cell.id.split(",");
+  toCell = e.target.className === "piece" ? e.target.parentElement : e.target; // whatever is clicked gets grabbed
+  toCoordinates = toCell.id.split(","); // the coordinates are put into array
 
   if (
-    from_coords.length === 0 &&
-    to_cell.firstChild &&
-    to_cell.firstChild.dataset.color === turn_color
+    fromCoordinates.length === 0 &&
+    toCell.firstChild &&
+    toCell.firstChild.dataset.color === turnColor
   ) {
-    from_coords = to_coords;
-    from_cell = to_cell;
-    from_cell.classList.add("selected");
-  } else if (from_coords.toString() === to_coords.toString()) {
+    fromCoordinates = toCoordinates;
+    fromCell = toCell;
+    fromCell.classList.add("selected");
+  } else if (fromCoordinates.toString() === toCoordinates.toString()) {
     removeSelection();
   } else if (
-    from_coords.length === 2 &&
-    ((to_cell.firstChild && to_cell.firstChild.dataset.color !== turn_color) ||
-      !to_cell.firstChild)
+    fromCoordinates.length === 2 &&
+    ((toCell.firstChild && toCell.firstChild.dataset.color !== turnColor) ||
+      !toCell.firstChild)
   ) {
     if (viableMove()) {
-      takeTurn(from_cell, to_cell);
+      takeTurn(fromCell, toCell);
       if (inCheck()) {
         revertTurn();
-        screenDisplay(`That move puts ${turn_color} in check!`);
+        screenDisplay(`That move puts ${turnColor} in check!`);
       } else {
         screenDisplay(
-          `${turn_color[0].toUpperCase() + turn_color.slice(1)} ${
-            to_cell.firstChild.dataset.piece
-          } to ${interfaceGrid(to_cell.id)}, ${
-            turn_color === "white" ? "Black'" : "White'"
+          `${turnColor[0].toUpperCase() + turnColor.slice(1)} ${
+            toCell.firstChild.dataset.piece
+          } to ${interfaceGrid(toCell.id)}, ${
+            turnColor === "white" ? "Black'" : "White'"
           }s turn`
         );
         endTurn();
@@ -161,13 +159,13 @@ function nextMove(e) {
 }
 
 function removeSelection() {
-  if (from_cell.classList) {
-    from_cell.classList.remove("selected");
+  if (fromCell.classList) {
+    fromCell.classList.remove("selected");
   }
-  from_cell = "";
-  from_coords = [];
-  to_cell = "";
-  to_coords = [];
+  fromCell = "";
+  fromCoordinates = [];
+  toCell = "";
+  toCoordinates = [];
 }
 
 function takeTurn(from, to) {
@@ -207,51 +205,51 @@ function endTurn() {
 }
 
 function switchTurn() {
-  turn_color = turn_color === "white" ? "black" : (turn = "white");
+  turnColor = turnColor === "white" ? "black" : (turn = "white");
   if (inCheck()) {
     screenDisplay(
-      `${turn_color[0].toUpperCase() + turn_color.slice(1)} is in check!`
+      `${turnColor[0].toUpperCase() + turnColor.slice(1)} is in check!`
     );
   }
   if (inCheckMate()) {
     screenDisplay(
-      `${turn_color[0].toUpperCase() + turn_color.slice(1)} is in checkmate!`
+      `${turnColor[0].toUpperCase() + turnColor.slice(1)} is in checkmate!`
     );
     gameOver();
   }
 }
 
 function viableMove() {
-  piece = from_cell.firstChild.dataset.piece;
+  piece = fromCell.firstChild.dataset.piece;
 
   if (
     piece === "pawn" &&
-    pawnMoves(from_cell, to_cell).indexOf(to_coords.toString()) > -1
+    pawnMoves(fromCell, toCell).indexOf(toCoordinates.toString()) > -1
   ) {
     return true;
   } else if (
     piece === "knight" &&
-    knightMoves(from_cell, to_cell).indexOf(to_coords.toString()) > -1
+    knightMoves(fromCell, toCell).indexOf(toCoordinates.toString()) > -1
   ) {
     return true;
   } else if (
     piece === "rook" &&
-    rookMoves(from_cell).indexOf(to_coords.toString()) > -1
+    rookMoves(fromCell).indexOf(toCoordinates.toString()) > -1
   ) {
     return true;
   } else if (
     piece === "bishop" &&
-    bishopMoves(from_cell).indexOf(to_coords.toString()) > -1
+    bishopMoves(fromCell).indexOf(toCoordinates.toString()) > -1
   ) {
     return true;
   } else if (
     piece === "queen" &&
-    queenMoves(from_cell).indexOf(to_coords.toString()) > -1
+    queenMoves(fromCell).indexOf(toCoordinates.toString()) > -1
   ) {
     return true;
   } else if (
     piece === "king" &&
-    kingMoves(from_cell, to_cell).indexOf(to_coords.toString()) > -1
+    kingMoves(fromCell, toCell).indexOf(toCoordinates.toString()) > -1
   ) {
     return true;
   }
@@ -340,7 +338,7 @@ function knightMoves(from) {
       if (
         piece &&
         (!piece.firstChild ||
-          (piece.firstChild && piece.firstChild.dataset.color !== turn_color))
+          (piece.firstChild && piece.firstChild.dataset.color !== turnColor))
       ) {
         options.push(piece.id);
       }
@@ -355,7 +353,7 @@ function knightMoves(from) {
       piece = document.getElementById(`${x + i},${y + j}`);
       if (
         piece &&
-        (!piece.firstChild || piece.firstChild.dataset.color !== turn_color)
+        (!piece.firstChild || piece.firstChild.dataset.color !== turnColor)
       ) {
         options.push(piece.id);
       }
@@ -564,11 +562,11 @@ function kingMoves(from) {
 }
 
 function inCheck() {
-  king = document.querySelector(`[data-piece="king"][data-color=${turn_color}]`)
+  king = document.querySelector(`[data-piece="king"][data-color=${turnColor}]`)
     .parentElement;
   king_coords = king.id.split(",");
 
-  opponent_color = turn_color === "white" ? "black" : "white";
+  opponent_color = turnColor === "white" ? "black" : "white";
   opponent_pieces = document
     .getElementById("board")
     .querySelectorAll(`img[data-color=${opponent_color}]`);
@@ -617,7 +615,7 @@ function inCheck() {
 function inCheckMate() {
   pieces = document
     .getElementById("board")
-    .querySelectorAll(`img[data-color=${turn_color}]`);
+    .querySelectorAll(`img[data-color=${turnColor}]`);
   count = 0;
   for (let piece of pieces) {
     paths = [];
