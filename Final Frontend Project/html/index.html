@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Final Project</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">Your Pantry</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Meal Plans</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Your Refrigerator</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="main" class="hero bg">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Find a Recipe</h4>
+          <div class="searchBox">
+            <input
+              type="text"
+              name="search"
+              class="search-txt"
+              placeholder="Enter Search..."
+            />
+            <button id="search" class="search-btn">
+              <img
+                width="30px"
+                src="/img/icons8-search-64.png"
+                alt="GIF of Search Icon"
+              />
+            </button>
+          </div>
+          <!-- <input id="searchItem" type="text" placeholder="Enter search here" />
+          <button id="search">Search</button> -->
+        </div>
+      </div>
+    </div>
+    <script src="/js/app.js"></script>
+  </body>
+</html>

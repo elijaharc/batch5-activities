@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
+
+body,
+html {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+.bg {
+  background-image: url("/img/kitchen.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  font-size: large;
+  font-weight: normal;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.navbar-brand a:hover {
+  color: rgb(64, 255, 0);
+}
+
+#navbarNav a {
+  color: white;
+}
+
+.card {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.486);
+}
+
+.card-body {
+  padding-bottom: 2.9rem;
+}
+
+.card h4 {
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-size: 3.8rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  text-indent: 10px;
+}
+
+/* search */
+.searchBox {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(255, 255, 255);
+  border-radius: 40px;
+  /* padding: 10px; */
+  width: 45%;
+}
+
+.search-btn {
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+}
+
+.search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  font-weight: bold;
+  width: 85%;
+}
