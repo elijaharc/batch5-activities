@@ -18,49 +18,83 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
+  overflow: hidden;
 }
+
+/* START NAV */
 
 .navbar {
   overflow: hidden;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.95);
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
   font-size: large;
-  font-weight: normal;
+  font-weight: lighter;
 }
 
-.navbar-brand {
+.navbar-toggler {
+  background-color: none;
+  border: black;
+}
+
+.navbar-toggler-icon {
   color: white;
 }
 
-.navbar-brand a:hover {
-  color: rgb(64, 255, 0);
+#navbarSupportedContent a {
+  color: rgb(0, 0, 0);
+  font-weight: lighter;
 }
 
-#navbarNav a {
-  color: white;
+#navbarSupportedContent a:hover {
+  color: rgb(179, 120, 12);
 }
+
+.nav-item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#logo {
+  color: orange;
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+#logo:hover {
+  color: orange;
+}
+
+.nav-link {
+  margin: 0 0.3rem;
+}
+
+/* END NAV BAR */
 
 .card {
-  width: 50%;
-  background-color: rgba(0, 0, 0, 0.486);
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 300px;
 }
 
 .card-body {
-  padding-bottom: 2.9rem;
+  padding-bottom: 3rem;
+  width: 100%;
+  /* min-width: 325px; */
 }
 
 .card h4 {
   font-weight: bold;
   text-align: center;
   color: white;
-  font-size: 3.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 input {
-  text-indent: 10px;
+  text-indent: 13px;
 }
 
 /* search */
@@ -71,25 +105,26 @@ input {
   background: rgb(255, 255, 255);
   border-radius: 40px;
   /* padding: 10px; */
-  width: 45%;
+  width: 50%;
+  max-height: 40px;
+  min-width: 235px;
 }
 
 .search-btn {
-  float: right;
+  position: absolute;
+  right: 0;
+  /* float: right; */
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
   cursor: pointer;
   outline: none;
   border-style: none;
 }
 
 .search-txt {
+  float: left;
   border: none;
   background: none;
   outline: none;
@@ -100,4 +135,5 @@ input {
   line-height: 40px;
   font-weight: bold;
   width: 85%;
+  min-width: 400px;
 }
