@@ -1,5 +1,6 @@
 // Main functions
-// [] set up webpage design
+// [x] set up landing page design
+// [] set up API results display design
 // [] recipe searching API
 // [] responsive design
 // [] daily/weekly calendar to organize meal plan
