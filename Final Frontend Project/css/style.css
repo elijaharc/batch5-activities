@@ -34,6 +34,11 @@ html {
   font-weight: lighter;
 }
 
+.navbar .navbar-brand {
+  color: orange;
+  font-weight: bold;
+}
+
 .navbar-toggler {
   background-color: none;
   border: black;
@@ -43,25 +48,25 @@ html {
   color: white;
 }
 
-#navbarSupportedContent {
-  display: flex;
+#navbarNav {
   flex-direction: column;
   align-items: flex-end;
 }
 
-#navbarSupportedContent a {
+#navbarNav a {
   color: rgb(0, 0, 0);
   font-weight: lighter;
 }
 
-#navbarSupportedContent a:hover {
+#navbarNav a:hover {
   color: rgb(179, 120, 12);
 }
 
-.nav-item {
+/* .navbar-nav {
   display: flex;
-  justify-content: flex-end;
-}
+  flex-direction: column;
+  justify-content: flex-start;
+} */
 
 #logo {
   color: orange;
