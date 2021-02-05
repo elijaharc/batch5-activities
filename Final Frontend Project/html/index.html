@@ -62,18 +62,22 @@
               name="search"
               class="search-txt"
               placeholder="Enter Search..."
+              id="searchInput"
             />
-            <button id="search" class="search-btn">
+            <button id="searchButton" class="search-btn" type="button">
               <img
+                id="buttonImage"
                 width="30px"
                 src="/img/icons8-search-64.png"
-                alt="GIF of Search Icon"
+                alt="Image of Search Icon"
+                onclick="searchRequest()"
               />
             </button>
           </div>
         </div>
       </div>
     </div>
+    <div id="content"></div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
