@@ -7,29 +7,26 @@ html {
   font-family: "Quicksand", sans-serif;
 }
 
-.bg {
+#main {
   background-image: url("https://images.unsplash.com/photo-1591189863345-9db058f9f8ec?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1972&q=80");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
-  /* centering */
+  /* centering card*/
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  overflow: hidden;
 }
 
 /* START NAV */
 
 .navbar {
-  /* overflow: hidden; */
-  background-color: rgba(255, 255, 255, 0.95);
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  position: fixed;
+  top: 0;
+  width: 100%;
   font-size: large;
   font-weight: lighter;
 }
@@ -37,6 +34,10 @@ html {
 .navbar .navbar-brand {
   color: orange;
   font-weight: bold;
+}
+
+.navbar-brand a:hover {
+  color: white;
 }
 
 .navbar-toggler {
@@ -62,12 +63,6 @@ html {
   color: rgb(179, 120, 12);
 }
 
-/* .navbar-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-} */
-
 #logo {
   color: orange;
   font-weight: bold;
@@ -80,15 +75,26 @@ html {
 
 /* END NAV BAR */
 
+.inactive {
+  display: none;
+}
+
+#noResults {
+  margin: auto;
+}
+
 .card {
   width: 40%;
   background-color: rgba(0, 0, 0, 0.5);
   min-width: 300px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
-.card-body {
+#card-body {
   padding-bottom: 3rem;
   width: 100%;
+  background-color: none;
   /* min-width: 325px; */
 }
 
@@ -98,10 +104,12 @@ html {
   color: white;
   font-size: 3rem;
   margin-bottom: 2.5rem;
+  margin-top: 1rem;
 }
 
 input {
   text-indent: 13px;
+  width: 100%;
 }
 
 /* search */
@@ -146,12 +154,18 @@ input {
   transition: 0.4s;
   line-height: 40px;
   font-weight: bold;
-  width: 85%;
-  min-width: 400px;
+  width: 100%;
+  border-radius: 40px;
 }
 
 /* CARD RESULTS */
 
 .card {
   margin: 2rem;
+}
+
+#contentArea {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
