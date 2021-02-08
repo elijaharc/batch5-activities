@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-white">
       <a class="navbar-brand" href="#">inspired kitchen</a>
       <button
         class="navbar-toggler"
@@ -52,9 +52,9 @@
       </div>
     </nav>
 
-    <div id="main" class="hero bg">
+    <div id="main" class="bg-active">
       <div class="card">
-        <div class="card-body">
+        <div id="card-body">
           <h4 class="card-title">Find a Recipe</h4>
           <div class="searchBox">
             <input
@@ -75,9 +75,25 @@
             </button>
           </div>
         </div>
+        <div
+          id="noResults"
+          class="alert alert-danger alert-dismissible fade show w-75 text-center center-block inactive"
+          role="alert"
+        >
+          <strong>Uh oh!</strong> No results found.
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
     </div>
-    <div id="content"></div>
+
+    <div id="contentArea"></div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
