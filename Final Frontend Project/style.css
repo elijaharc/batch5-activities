@@ -14,7 +14,6 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 
-  /* centering card*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +23,6 @@ html {
 /* START NAV */
 
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
   font-size: large;
   font-weight: lighter;
 }
@@ -36,17 +32,8 @@ html {
   font-weight: bold;
 }
 
-.navbar-brand a:hover {
-  color: white;
-}
-
-.navbar-toggler {
-  background-color: none;
-  border: black;
-}
-
 .navbar-toggler-icon {
-  color: white;
+  color: black;
 }
 
 #navbarNav {
@@ -60,17 +47,7 @@ html {
 }
 
 #navbarNav a:hover {
-  color: rgb(179, 120, 12);
-}
-
-#logo {
-  color: orange;
-  font-weight: bold;
-  padding: 8px 8px;
-}
-
-#logo:hover {
-  color: orange;
+  color: rgb(255, 145, 0);
 }
 
 /* END NAV BAR */
@@ -86,16 +63,14 @@ html {
 .card {
   width: 40%;
   background-color: rgba(0, 0, 0, 0.5);
-  min-width: 300px;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  min-width: 250px;
+  padding: 1rem;
 }
 
 #card-body {
   padding-bottom: 3rem;
   width: 100%;
   background-color: none;
-  /* min-width: 325px; */
 }
 
 .card h4 {
@@ -112,14 +87,12 @@ input {
   width: 100%;
 }
 
-/* search */
 .searchBox {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgb(255, 255, 255);
   border-radius: 40px;
-  /* padding: 10px; */
   width: 50%;
   max-height: 40px;
   min-width: 235px;
@@ -133,7 +106,6 @@ input {
 .search-btn {
   position: absolute;
   right: 0;
-  /* float: right; */
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -144,7 +116,7 @@ input {
 }
 
 .search-txt {
-  float: left;
+  /* float: left; */
   border: none;
   background: none;
   outline: none;
