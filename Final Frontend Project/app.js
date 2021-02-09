@@ -1,22 +1,24 @@
 // Main functions
 // [x] set up landing page design
-// [] set up API results display design
-// [] recipe searching API
-// [] responsive design
+// [x] set up API results display design
+// [x] recipe searching API
+// [x] responsive design
+// [] make favorites tab
+// [] toggle list view
 // [] daily/weekly calendar to organize meal plan
 // [] search random photos of food item (for inspiration)
 
 // Variables:
 let recipeDisplay = document.getElementById("contentArea");
 let searchInput = document.getElementById("searchInput");
-// const searchQuery = searchInput.value;
 let searchButton = document.getElementById("searchButton");
 let cardBody = document.getElementById("card-body");
 let main = document.getElementById("main");
 let noResult = document.getElementById("noResults");
-// .addEventListener("click", searchRequest());
+let addToFave = document.getElementById("addToFave");
+let favorites = [];
 
-// async function for fetching data from API:
+// Async function for fetching data from API:
 async function searchRequest() {
   let query = searchInput.value.trim();
   let APP_ID = "9716ae0a";
@@ -47,12 +49,21 @@ function useApiData(data) {
         <div class="card-body">
           <h5 class="card-title">${data.hits[i].recipe.label}</h5>
           <p class="card-text">Source: ${data.hits[i].recipe.source}</p>
-          <p class="card-text">Health labels: ${data.hits[
+          <p class="card-text">Health Labels: ${data.hits[
             i
           ].recipe.healthLabels.join(", ")}</p>
-          <a href="${
+          
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-sm btn-info active" onClick="window.open('${
             data.hits[i].recipe.url
-          }" target="_blank" class="btn btn-primary">View Recipe</a>
+          }', '_blank')">
+          <input type="radio" name="options" id="addToFave" autocomplete="off" checked> View Recipe
+        </label>
+
+        <label class="btn btn-sm btn-secondary active">
+          <input type="radio" name="options" id="addToFave" autocomplete="off" checked> Add to Favorites
+        </label>
+        </div>
         </div>
       </div>`;
       recipeDisplay.appendChild(content);
