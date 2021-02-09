@@ -31,12 +31,19 @@ async function searchRequest() {
 }
 
 function useApiData(data) {
+  let resultText = document.createElement("div");
+  resultText.classList.add("container");
+  resultText.innerHTML = `<h1 class="m-4 text-center" id="resultHeader">Here are the recipes we found for you!</h1>`;
+  recipeDisplay.appendChild(resultText);
+
   if (data.count > 0) {
     for (let i = 0; i < 9; i++) {
       let content = document.createElement("div");
       content.className = "results";
-      content.innerHTML = `<div class="card" style="width: 18rem;">
-        <img src="${data.hits[i].recipe.image}" class="card-img-top" alt="...">
+      content.innerHTML = `<div class="card bg-light" style="width: 18rem;">
+        <img src="${
+          data.hits[i].recipe.image
+        }" class="card-img-top" alt="Image of ${data.q}">
         <div class="card-body">
           <h5 class="card-title">${data.hits[i].recipe.label}</h5>
           <p class="card-text">Source: ${data.hits[i].recipe.source}</p>
