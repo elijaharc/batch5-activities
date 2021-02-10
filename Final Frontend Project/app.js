@@ -20,6 +20,8 @@ let main = document.getElementById("main");
 let noResult = document.getElementById("noResults");
 let addToFave = document.getElementById("addToFave");
 let resultHeader = document.getElementById("resultHeader");
+let favoritesDisplay = document.getElementById("favoritesDisplay");
+let searchHistory = [];
 let favoritesArray = [];
 let divNum;
 
@@ -30,10 +32,38 @@ class SearchObject {
   }
 }
 
-// function addToFavorites() {
-//   let divNum = this.parentElement.id;
-//   console.log(divNum);
-// }
+function addToFavorites(clickedId) {
+  let id = clickedId;
+  let index = parseInt(id.replace(/\D/g, ""));
+  favoritesArray.push(searchHistory[0].data.hits[index]);
+  console.log(index);
+  console.log(favoritesArray);
+  for (let i = 0; i < favoritesArray.length; i++) {
+    let items = document.createElement("div");
+    items.innerHTML = `<div class="card bg-light" style="width: 18rem;">
+    <img src="${
+      searchHistory[0].data.hits[index].recipe.image
+    }" class="card-img-top" alt="Image of ${searchHistory[0].data.q}">
+    <div class="card-body">
+      <h5 class="card-title">${
+        searchHistory[0].data.hits[index].recipe.label
+      }</h5>
+      <p class="card-text">Source: ${
+        searchHistory[0].data.hits[index].recipe.source
+      }</p>
+      <p class="card-text">Health Labels: ${searchHistory[0].data.hits[
+        index
+      ].recipe.healthLabels.join(", ")}</p>
+      
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-sm btn-success active" onClick="window.open('${
+        searchHistory[0].data.hits[index].recipe.url
+      }', '_blank')">
+      <input type="radio" name="options" autocomplete="off" checked> View Recipe
+    </label>`;
+    favoritesDisplay.appendChild(items);
+  }
+}
 
 // Async function for fetching data from API:
 async function searchRequest() {
@@ -48,16 +78,8 @@ async function searchRequest() {
   console.log(data);
   useApiData(data);
   let currentSearch = new SearchObject(data);
-  favoritesArray.push(currentSearch);
-  console.log(favoritesArray);
-  for (let obj of favoritesArray) {
-    for (let keys in obj) {
-      console.log(keys);
-      if (data.q === query) {
-        console.log("oops exists");
-      }
-    }
-  }
+  searchHistory.push(currentSearch);
+  console.log(searchHistory);
 }
 
 function useApiData(data) {
@@ -83,11 +105,13 @@ function useApiData(data) {
           <label class="btn btn-sm btn-success active" onClick="window.open('${
             data.hits[i].recipe.url
           }', '_blank')">
-          <input type="radio" name="options" id="addToFave" autocomplete="off" checked> View Recipe
+          <input type="radio" name="options" autocomplete="off" checked> View Recipe
         </label>
 
-        <label class="btn btn-sm btn-warning active" onClick="addToFavorites()">
-          <input type="radio" name="options" id="addToFave" autocomplete="off" checked> Add to Favorites
+        <label class="btn btn-sm btn-warning active" id="${
+          data.q
+        }-${i}-btn" onClick="addToFavorites(this.id)">
+          <input type="radio" name="options" autocomplete="off" checked> Add to Favorites
         </label>
         </div>
         </div>
