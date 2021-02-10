@@ -141,7 +141,3 @@ input {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
-.saved {
-  background-color: red;
-}
