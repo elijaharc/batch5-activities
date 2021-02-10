@@ -5,18 +5,35 @@
 // [x] responsive design
 // [] make favorites tab
 // [] toggle list view
+// [] add search in navbar
+// [] add button to bring to top
+// [] organize results in bootstrap grid
 // [] daily/weekly calendar to organize meal plan
 // [] search random photos of food item (for inspiration)
 
 // Variables:
-let recipeDisplay = document.getElementById("contentArea");
+let recipeDisplay = document.getElementById("recipeDisplay");
 let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
 let cardBody = document.getElementById("card-body");
 let main = document.getElementById("main");
 let noResult = document.getElementById("noResults");
 let addToFave = document.getElementById("addToFave");
-let favorites = [];
+let resultHeader = document.getElementById("resultHeader");
+let favoritesArray = [];
+let divNum;
+
+// User Constructor
+class SearchObject {
+  constructor(data) {
+    this.data = data;
+  }
+}
+
+// function addToFavorites() {
+//   let divNum = this.parentElement.id;
+//   console.log(divNum);
+// }
 
 // Async function for fetching data from API:
 async function searchRequest() {
@@ -24,24 +41,33 @@ async function searchRequest() {
   let APP_ID = "9716ae0a";
   let API_KEY = "03ee4f1c63bc754c18d193783e331e09";
   let response = await fetch(
-    `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${query}`
+    `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${query}&to=16`
   );
   console.log(response);
   let data = await response.json();
   console.log(data);
   useApiData(data);
+  let currentSearch = new SearchObject(data);
+  favoritesArray.push(currentSearch);
+  console.log(favoritesArray);
+  for (let obj of favoritesArray) {
+    for (let keys in obj) {
+      console.log(keys);
+      if (data.q === query) {
+        console.log("oops exists");
+      }
+    }
+  }
 }
 
 function useApiData(data) {
-  let resultText = document.createElement("div");
-  resultText.classList.add("container");
-  resultText.innerHTML = `<h1 class="m-4 text-center" id="resultHeader">Here are the recipes we found for you!</h1>`;
-  recipeDisplay.appendChild(resultText);
-
+  recipeDisplay.innerHTML = "";
+  resultHeader.classList.remove("inactive");
   if (data.count > 0) {
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 16; i++) {
       let content = document.createElement("div");
       content.className = "results";
+      content.id = `${data.q}-${i}`;
       content.innerHTML = `<div class="card bg-light" style="width: 18rem;">
         <img src="${
           data.hits[i].recipe.image
@@ -54,13 +80,13 @@ function useApiData(data) {
           ].recipe.healthLabels.join(", ")}</p>
           
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-sm btn-info active" onClick="window.open('${
+          <label class="btn btn-sm btn-success active" onClick="window.open('${
             data.hits[i].recipe.url
           }', '_blank')">
           <input type="radio" name="options" id="addToFave" autocomplete="off" checked> View Recipe
         </label>
 
-        <label class="btn btn-sm btn-secondary active">
+        <label class="btn btn-sm btn-warning active" onClick="addToFavorites()">
           <input type="radio" name="options" id="addToFave" autocomplete="off" checked> Add to Favorites
         </label>
         </div>
