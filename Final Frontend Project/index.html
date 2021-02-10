@@ -8,10 +8,9 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Final Project</title>
+    <title>Final Frontend Project</title>
 
     <!-- BOOTSTRAP CSS -->
-
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- NAVBAR HTML START -->
+    <!-- NAVBAR START -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
       <a class="navbar-brand" href="#">inspired kitchen</a>
       <button
@@ -56,10 +55,11 @@
         </ul>
       </div>
     </nav>
-    <!-- NAVBAR HTML END -->
+    <!-- NAVBAR END -->
 
     <!-- MAIN CONTENT HTML START -->
 
+    <!-- SEARCH CARD START -->
     <div id="main" class="container">
       <div class="card">
         <div id="card-body">
@@ -102,10 +102,11 @@
     </div>
     <!-- SEARCH CARD END -->
 
-    <div class="container" id="favoritesDisplay">
+    <div class="container">
       <div class="row">
-        <div class="col">Favorites:</div>
+        <h1 class="text-center display-4">Favorites:</h1>
       </div>
+      <div id="favoritesDisplay"></div>
     </div>
 
     <div id="contentArea">
@@ -114,7 +115,10 @@
       </div>
       <div id="recipeDisplay"></div>
     </div>
+
     <!-- MAIN CONTENT HTML END -->
+
+    <!-- BOOTSTRAP AND JS -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
