@@ -17,13 +17,16 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <!-- MAIN CSS -->
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <!-- NAVBAR START -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="#">inspired kitchen</a>
+    <nav
+      id="mainNavbar"
+      class="navbar navbar-expand-sm navbar-light bg-light fixed-top py-1"
+    >
+      <a class="navbar-brand" href="#main">inspired kitchen</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -46,11 +49,13 @@
             <a class="nav-link" href="#main">search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">favorites</a>
+            <a class="nav-link" href="#favoritesHeader" id="faveBtn"
+              >favorites</a
+            >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">about us</a>
+            <a class="nav-link" href="#aboutUs">about us</a>
           </li>
         </ul>
       </div>
@@ -58,37 +63,235 @@
     <!-- NAVBAR END -->
 
     <!-- MAIN CONTENT HTML START -->
-
-    <!-- SEARCH CARD START -->
-    <div id="main" class="container">
-      <div class="card">
-        <div id="card-body">
-          <h4 class="card-title">Find a Recipe</h4>
-          <div class="searchBox">
+    <section id="main" class="container-fluid text-center mt-0">
+      <div id="mainInner" class="row align-items-center">
+        <div class="col">
+          <p class="m-0 text-dark">
+            search <span class="text-success">/</span> cook
+          </p>
+          <h1 id="hero" class="display-1 text-black m-0">inspired</h1>
+          <p class="p-0 m-0">/inˈspī(ə)rd/</p>
+          <p class="lead mt-4 m-1 mb-2">
+            Hungry? Get started by searching for a recipe.
+          </p>
+          <div class="input-group col-12">
             <input
-              type="text"
-              name="search"
-              class="search-txt"
-              placeholder="Enter Search..."
+              type="search"
               id="searchInput"
+              class="form-control searcht-txt"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
             />
-            <button id="searchButton" class="search-btn" type="button">
-              <img
-                id="buttonImage"
-                width="30px"
-                src="./img/icons8-search-64.png"
-                alt="Image of Search Icon"
-                onclick="searchRequest()"
-              />
+            <button
+              id="searchButton"
+              type="button"
+              class="btn btn-success"
+              onclick="searchRequest()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div id="loadingGif" class="inactive">
+            <img
+              src="./img/Ellipsis-1.7s-200px.gif"
+              width="90px"
+              alt="Loading Page"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAVORITES SECTION START -->
+
+    <div
+      class="jumbotron jumbotron-fluid bg-light inactive"
+      id="favoritesHeader"
+    >
+      <div class="container">
+        <h1 class="display-4 font-weight-bold text-center">
+          Your Favorite Recipes
+        </h1>
+        <p class="lead text-center">
+          Here's a collection of the recipes you've saved. Happy cooking!
+        </p>
+
+        <div
+          id="noItems"
+          class="alert alert-danger alert-dismissible fade show w-75 text-center center-block inactive container-fluid p-4"
+          role="alert"
+        >
+          <strong>Uh oh!</strong> It looks like you do not have any recipes
+          saved. Search for a recipe and click the 'Add to Favorites' button to
+          save your favorite recipes!
+        </div>
+        <div id="favesCount" class="text-muted ml-5 mt-5"></div>
+        <div id="favoritesDisplay"></div>
+      </div>
+    </div>
+
+    <!-- FAVORITES SECTION END -->
+
+    <!-- RECIPE RESULTS START -->
+
+    <!-- add inactive back to first class -->
+    <div
+      class="jumbotron jumbotron-fluid bg-light my-1 inactive"
+      id="resultHeader"
+    >
+      <div class="container">
+        <h1 class="text-center quoteHeader mb-4">
+          Here are the recipes we found just for you!
+        </h1>
+
+        <div class="container">
+          <blockquote class="blockquote text-center">
+            <p id="quoteMain" class="quote"></p>
+            <footer class="blockquote-footer">
+              <cite id="quoteCite"></cite>
+            </footer>
+          </blockquote>
+        </div>
+        <div
+          class="col d-sm-flex align-items-sm-end justify-content-sm-between pb-4"
+        >
+          <div id="resultCount" class="text-muted text-center mt-5"></div>
+          <div
+            id="toggleView"
+            class="d-flex text-center justify-content-center mt-3"
+          >
+            <p class="mr-2 mb-0 pt-1 text-muted">Toggle View:</p>
+            <button
+              type="button"
+              id="thumbnailView
+            "
+              onclick="thumbnailViewOn()"
+              class="mr-1 btn btn-sm btn-warning"
+            >
+              Gallery
+            </button>
+            <button
+              type="button"
+              id="carouselView"
+              onclick="carouselViewOn()"
+              class="btn btn-sm btn-dark"
+            >
+              Slides
             </button>
           </div>
         </div>
+
+        <div id="recipeDisplay"></div>
+        <div id="carouselDisplay" class="d-none">
+          <div class="container-fluid p-0 my-1">
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <div id="putCarouselChildHere" class="mt-3"></div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  id="prevIcon"
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  id="nextIcon"
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE RESULTS END -->
+
+    <!-- CAROUSEL VIEW START -->
+
+    <!-- CAROUSEL VIEW END -->
+
+    <!-- ABOUT US START -->
+
+    <div class="container-fluid mt-1 bg-light d-lg-flex" id="aboutUs">
+      <div class="row">
+        <div class="col-lg-6 p-0 d-flex justify-content-center flex-column">
+          <h1
+            id="aboutUsHeader"
+            class="text-center font-weight-normal mt-4 mb-lg-0"
+          >
+            About Us
+          </h1>
+          <h2 class="display-4 text-center mx-4 mb-4 mt-2 m-lg-4">
+            Finding recipes made easier
+          </h2>
+
+          <p class="mx-5 mb-5 mb-lg-0 text-center font-weight-light">
+            This website was created for people who are looking for simple and
+            delicious recipes that can be made right at home! We believe that
+            great food does not have to be complicated. So get your aprons and
+            knives ready and let's get cooking!
+          </p>
+        </div>
+        <div class="col-lg-6 p-0">
+          <img
+            src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT US END -->
+
+    <!-- NO RESULTS MODAL -->
+    <div
+      class="modal fade"
+      id="noResultsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="noResultsModalLabel"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-center"
+        role="document"
+      >
         <div
-          id="noResults"
-          class="alert alert-danger alert-dismissible fade show w-75 text-center center-block inactive"
+          class="alert alert-danger alert-dismissible fade show text-center"
           role="alert"
         >
-          <strong>Uh oh!</strong> No results found.
+          <strong>Uh oh!</strong> No recipes found. Please try another recipe.
           <button
             type="button"
             class="close"
@@ -100,20 +303,88 @@
         </div>
       </div>
     </div>
-    <!-- SEARCH CARD END -->
 
-    <div class="container">
-      <div class="row">
-        <h1 class="text-center display-4">Favorites:</h1>
+    <!-- NO FAVES YET MODAL -->
+    <div
+      class="modal fade"
+      id="noFaveModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="noFaveModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div
+          class="alert alert-warning alert-dismissible fade show text-center"
+          role="alert"
+        >
+          You have not added any recipes to your favorites. Begin by searching
+          for a recipe, then click on the 'Add to Favorites' button!
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
-      <div id="favoritesDisplay"></div>
     </div>
 
-    <div id="contentArea">
-      <div class="container inactive" id="resultHeader">
-        <h1 class="m-4 text-center">Here are the recipes we found for you!</h1>
+    <!-- SUCCESS MODAL -->
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="successModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div
+          class="alert alert-success alert-dismissible fade show text-center"
+          role="alert"
+        >
+          <strong>Yay!</strong> Recipe was added to your favorites.
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
-      <div id="recipeDisplay"></div>
+    </div>
+
+    <!-- ERROR MODAL -->
+    <div
+      class="modal fade"
+      id="existingModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="existingModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div
+          class="alert alert-danger alert-dismissible fade show text-center"
+          role="alert"
+        >
+          <strong>Oops!</strong> Recipe has already been added to your
+          favorites.
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- MAIN CONTENT HTML END -->
