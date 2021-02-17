@@ -3,16 +3,18 @@
 // [x] set up API results display design
 // [x] recipe searching API
 // [x] responsive design
-// [] make title bold font weight
-// [] add remove from favorites button
-// [] add item already added to favorites
-// [] make favorites tab
-// [] toggle list view
-// [] add search in navbar
-// [] add button to bring to top
-// [] organize results in bootstrap grid
-// [] daily/weekly calendar to organize meal plan
-// [] save favorites in local storage
+// [x] make title bold font weight
+// [x] add remove from favorites button
+// [x] add item already added to favorites
+// [x] create array of random cooking quotes to display in the results tab
+// [x] add search in navbar
+// [x] make favorites tab
+// [x] add loading gif modal
+// [x] about us page
+// [x] make scrolling navbar
+// [x] add carousel view
+// [x] save favorites in local storage
+// [] clean up code
 
 // Variables:
 let recipeDisplay = document.getElementById("recipeDisplay");
@@ -20,14 +22,78 @@ let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
 let cardBody = document.getElementById("card-body");
 let main = document.getElementById("main");
-let noResult = document.getElementById("noResults");
+let noResult = document.getElementById("noResultsModal");
 let addToFave = document.getElementById("addToFave");
 let resultHeader = document.getElementById("resultHeader");
+let favoritesHeader = document.getElementById("favoritesHeader");
 let favoritesDisplay = document.getElementById("favoritesDisplay");
+let aboutUs = document.getElementById("aboutUs");
+let noItems = document.getElementById("noItems");
+let favesCount = document.getElementById("favesCount");
+let resultCount = document.getElementById("resultCount");
+let quoteMain = document.getElementById("quoteMain");
+let quoteCite = document.getElementById("quoteCite");
+let loadingGif = document.getElementById("loadingGif");
+let carouselDisplay = document.getElementById("carouselDisplay");
+let putCarouselChildHere = document.getElementById("putCarouselChildHere");
+let faveBtn = document
+  .getElementById("faveBtn")
+  .addEventListener("click", function () {
+    noFave();
+  });
+let searchHistory = [];
 let hasSearchDupe = false;
 let hasFaveDupe = false;
-let searchHistory = [];
-let favoritesArray = [];
+let carouselOn = false;
+let thumbnailOn = true;
+let objIndex = 0;
+
+// Quotes Arrays
+let quotesArray = [
+  `"A recipe has no soul. You as the cook must bring soul to the recipe."`,
+  `"Cooking is at once child’s play and adult joy. And cooking done with care is an act of love."`,
+  `"Until I discovered cooking, I was never really interested in anything."`,
+  `"Cooking is like love. It should be entered into with abandon or not at all."`,
+  `"Cooking and shopping for food brings rhythm and meaning to our lives."`,
+  `"People want honest, flavourful food, not some show-off meal that takes days to prepare."`,
+  `"For me, cooking is an expression of the land where you are and the culture of that place."`,
+  `"I cook with wine; sometimes I even add it to the food."`,
+];
+
+let quotesCite = [
+  "Thomas Keller",
+  "Craig Claiborne",
+  "Julia Child",
+  "Harriet Van Horne",
+  "Alice Waters",
+  "Ted Allen",
+  "Wolfgang Puck",
+  "W.C. Fields",
+];
+onLoad();
+function onLoad() {
+  // LOCAL STORAGE:
+  if (localStorage.getItem("favesInnerHTML") === null) {
+    // if none, set task to empty array
+    favesInnerHTML = "";
+  } else {
+    // if there are users, convert it to array
+    favesInnerHTML = JSON.parse(localStorage.getItem("favesInnerHTML"));
+  }
+  if (localStorage.getItem("favoritesArray") === null) {
+    // if none, set task to empty array
+    favoritesArray = [];
+  } else {
+    // if there are users, convert it to array
+    favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
+  }
+  objIndex = favoritesArray.length;
+  if (favesInnerHTML.length >= 1) {
+    showFavorites();
+  } else {
+    console.log("no faves yet");
+  }
+}
 
 // Object constructor
 class SearchObject {
@@ -36,42 +102,162 @@ class SearchObject {
   }
 }
 
-function addToFavorites(clickedId) {
+// Generate random quote
+function getRandomQuote() {
+  quoteCite.classList.remove("inactive");
+  let randomNum = Math.floor(Math.random() * 8);
+  quoteMain.innerText = quotesArray[randomNum];
+  quoteCite.innerText = quotesCite[randomNum];
+}
+
+// For getting card ID
+function updateDivId() {
+  for (let i = 0; i < favoritesDisplay.childNodes.length; i++) {
+    let childNode = favoritesDisplay.childNodes[i];
+    childNode.id = `favoriteRecipe-${i}`;
+  }
+}
+
+// For getting ID of button in card
+function updateBtnId() {
+  for (let i = 0; i < favoritesDisplay.childNodes.length; i++) {
+    let btnId =
+      favoritesDisplay.childNodes[i].childNodes[0].childNodes[3].childNodes[7]
+        .childNodes[3];
+    btnId.id = `updated-${i}`;
+  }
+}
+
+// Remove recipe from favorites
+function removeFavorite(clickedId) {
+  // LOCAL STORAGE:
+  if (localStorage.getItem("favoritesArray") === null) {
+    // if none, set task to empty array
+    favoritesArray = [];
+  } else {
+    // if there are users, convert it to array
+    favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
+  }
+  favesInnerHTML = JSON.parse(localStorage.getItem("favesInnerHTML"));
+  // ^
   let id = clickedId;
   let index = parseInt(id.replace(/\D/g, ""));
+  favoritesArray.splice(index, 1);
+  console.log(index);
+  document.querySelector(`#favoriteRecipe-${index}`).remove();
+  objIndex--;
+  console.log(`objIndex: ${objIndex}`);
+  console.log(`splice index: ${index}`);
+  if (favoritesArray.length === 0) {
+    noItems.classList.remove("inactive");
+    favesCount.classList.add("inactive");
+    objIndex = 0;
+  }
+  if (favoritesArray.length === 1) {
+    favesCount.innerText = `Displaying: 1 recipe`;
+  } else {
+    favesCount.innerText = `Displaying: ${objIndex} recipes`;
+  }
+  console.log(favoritesArray);
+  console.log(`index is: ${index}`);
+  updateDivId();
+  updateBtnId();
+
+  favesInnerHTML = favoritesDisplay.innerHTML;
+  showFavorites();
+
+  localStorage.setItem("favesInnerHTML", JSON.stringify(favesInnerHTML));
+  localStorage.setItem("favoritesArray", JSON.stringify(favoritesArray));
+
+  // ^
+}
+
+// Add recipe to favorites
+function addToFavorites(clickedId) {
+  showFavorites();
+  // LOCAL STORAGE:
+  if (localStorage.getItem("favoritesArray") === null) {
+    // if none, set task to empty array
+    favoritesArray = [];
+  } else {
+    // if there are users, convert it to array
+    favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
+  }
+  favesInnerHTML = JSON.parse(localStorage.getItem("favesInnerHTML"));
+  // ^
+  favoritesHeader.classList.remove("inactive");
+  favesCount.classList.remove("inactive");
+  let id = clickedId;
+  let index = parseInt(id.replace(/\D/g, ""));
+
   favoritesArray.push(searchHistory[searchHistory.length - 1].data.hits[index]);
+  favoritesArray[objIndex].theIndex = objIndex;
 
   faveDupe();
-  if (hasFaveDupe) {
-    favoritesArray.pop();
-  }
-  hasFaveDupe = false;
-
-  console.log(favoritesArray);
-
-  let items = document.createElement("div");
-  for (let faves of favoritesArray) {
-    items.innerHTML = `<div class="card bg-light" style="width: 18rem;">
+  if (!hasFaveDupe) {
+    let items = document.createElement("div");
+    for (let faves of favoritesArray) {
+      items.innerHTML = `<div class="card bg-light" style="width: 18rem;">
     <img src="${faves.recipe.image}" class="card-img-top" alt="">
     <div class="card-body">
-      <h5 class="card-title">${faves.recipe.label}</h5>
+      <h5 class="card-title font-weight-bold">${faves.recipe.label}</h5>
       <p class="card-text">Source: ${faves.recipe.source}</p>
       <p class="card-text">Health Labels: ${faves.recipe.healthLabels.join(
         ", "
       )}</p>
       
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-sm btn-success active" onClick="window.open('${
+      <label class="btn btn-sm active viewRecipe" onClick="window.open('${
         faves.recipe.url
       }', '_blank')">
       <input type="radio" name="options" autocomplete="off" checked> View Recipe
+    </label>
+    <label class="btn btn-sm active addTo" onClick="removeFavorite(this.id)" id="id-${
+      favoritesArray[objIndex].theIndex
+    }">
+      <input type="radio" name="options" autocomplete="off" checked> Remove Recipe
     </label>`;
-    favoritesDisplay.appendChild(items);
+      favoritesDisplay.appendChild(items);
+      successAdded();
+    }
+  } else {
+    favoritesArray.pop();
+    hasBeenAdded();
+    objIndex -= 1;
   }
+
+  objIndex++;
+  if (favoritesArray.length > 0) {
+    noItems.classList.add("inactive");
+  }
+  if (favoritesArray.length === 1) {
+    favesCount.innerText = `Displaying: 1 recipe`;
+  } else {
+    favesCount.innerText = `Displaying: ${objIndex} recipes`;
+  }
+  console.log(favoritesArray);
+  console.log(`objIndex: ${objIndex}`);
+  updateDivId();
+  hasFaveDupe = false;
+  favesInnerHTML = favoritesDisplay.innerHTML;
+  localStorage.setItem("favesInnerHTML", JSON.stringify(favesInnerHTML));
+  localStorage.setItem("favoritesArray", JSON.stringify(favoritesArray));
+  // ^
+  showFavorites();
 }
 
 // Async function for fetching data from API:
 async function searchRequest() {
+  // // LOCAL STORAGE:
+  // if (localStorage.getItem("searchHistory") === null) {
+  //   // if none, set task to empty array
+  //   searchHistory = [];
+  // } else {
+  //   // if there are users, convert it to array
+  //   searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+  // }
+  // // ^
+  loadingGif.classList.remove("inactive");
   let query = searchInput.value.trim();
   let APP_ID = "9716ae0a";
   let API_KEY = "03ee4f1c63bc754c18d193783e331e09";
@@ -83,44 +269,37 @@ async function searchRequest() {
   console.log(data);
   useApiData(data);
   let currentSearch = new SearchObject(data);
-  searchHistory.push(currentSearch);
+  if (data.hits.length === 0) {
+    noResultsFound();
+    if (searchHistory.length === 0) {
+      resultHeader.classList.add("inactive");
+      quoteCite.classList.add("inactive");
+    }
+  } else {
+    searchHistory.push(currentSearch);
+    getRandomQuote();
+  }
   searchDupe();
   if (hasSearchDupe) {
     searchHistory.pop();
   }
+  if (carouselOn) {
+    carouselViewOn();
+  }
   hasSearchDupe = false;
+  // convert users to string and set it back to localStorage
+  // localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  // ^
   console.log(searchHistory);
 }
 
-// find duplicates in searchHistory array
-function searchDupe() {
-  searchHistory
-    .map((v) => v.data.q)
-    .sort()
-    .sort((a, b) => {
-      if (a === b) hasSearchDupe = true;
-    });
-  // console.log(`Is there a duplicate? ${hasSearchDupe}`);
-  return hasSearchDupe;
-}
-
-// find duplicates in favoritesArray
-function faveDupe() {
-  favoritesArray
-    .map((v) => v.recipe.label)
-    .sort()
-    .sort((a, b) => {
-      if (a === b) hasFaveDupe = true;
-    });
-  console.log(`Is there a duplicate? ${hasFaveDupe}`);
-  return hasFaveDupe;
-}
-
+// Create cards in DOM
 function useApiData(data) {
-  recipeDisplay.innerHTML = "";
   resultHeader.classList.remove("inactive");
-  if (data.count > 0) {
-    for (let i = 0; i < 20; i++) {
+  if (data.count >= 1) {
+    recipeDisplay.innerHTML = "";
+    noResult.classList.add("inactive");
+    for (let i = 0; i < data.hits.length; i++) {
       let content = document.createElement("div");
       content.className = "results";
       content.id = `${data.q}-${i}`;
@@ -129,20 +308,22 @@ function useApiData(data) {
           data.hits[i].recipe.image
         }" class="card-img-top" alt="Image of ${data.q}">
         <div class="card-body">
-          <h5 class="card-title">${data.hits[i].recipe.label}</h5>
+          <h5 class="card-title font-weight-bold">${
+            data.hits[i].recipe.label
+          }</h5>
           <p class="card-text">Source: ${data.hits[i].recipe.source}</p>
           <p class="card-text">Health Labels: ${data.hits[
             i
           ].recipe.healthLabels.join(", ")}</p>
           
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-sm btn-success active" onClick="window.open('${
+          <label class="btn btn-sm active viewRecipe" onClick="window.open('${
             data.hits[i].recipe.url
           }', '_blank')">
           <input type="radio" name="options" autocomplete="off" checked> View Recipe
         </label>
 
-        <label class="btn btn-sm btn-warning active" id="${
+        <label class="btn btn-sm active addTo" id="${
           data.q
         }-${i}-btn" onClick="addToFavorites(this.id)">
           <input type="radio" name="options" autocomplete="off" checked> Add to Favorites
@@ -151,8 +332,137 @@ function useApiData(data) {
         </div>
       </div>`;
       recipeDisplay.appendChild(content);
+      resultHeader.scrollIntoView();
+      if (data.count === 1) {
+        resultCount.innerText = `Displaying: 1 recipe`;
+      } else {
+        resultCount.innerText = `Displaying: ${i + 1} recipes`;
+      }
     }
-  } else {
-    noResult.classList.remove("inactive");
   }
+  loadingGif.classList.add("inactive");
+}
+
+// Find duplicates in searchHistory array
+function searchDupe() {
+  searchHistory
+    .map((v) => v.data.q)
+    .sort()
+    .sort((a, b) => {
+      if (a === b) hasSearchDupe = true;
+    });
+  return hasSearchDupe;
+}
+
+// Find duplicates in favoritesArray
+function faveDupe() {
+  favoritesArray
+    .map((v) => v.recipe.uri)
+    .sort()
+    .sort((a, b) => {
+      if (a === b) hasFaveDupe = true;
+    });
+  console.log(`Is there a duplicate? ${hasFaveDupe}`);
+  return hasFaveDupe;
+}
+
+// Modal functions
+
+function hasBeenAdded() {
+  $("#existingModal").modal(focus);
+  setTimeout(function () {
+    $("#existingModal").modal("hide");
+  }, 2500);
+}
+
+function successAdded() {
+  $("#successModal").modal(focus);
+  setTimeout(function () {
+    $("#successModal").modal("hide");
+  }, 2500);
+}
+
+function noFave() {
+  // LOCAL STORAGE:
+  if (localStorage.getItem("favoritesArray") === null) {
+    // if none, set task to empty array
+    favoritesArray = [];
+  } else {
+    // if there are users, convert it to array
+    favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
+  }
+  // ^
+  if (favoritesArray.length === 0) {
+    $("#noFaveModal").modal(focus);
+    setTimeout(function () {
+      $("#noFaveModal").modal("hide");
+    }, 10000);
+  } else {
+    favoritesHeader.scrollIntoView();
+  }
+}
+
+function noResultsFound() {
+  $("#noResultsModal").modal(focus);
+  setTimeout(function () {
+    $("#noResultsModal").modal("hide");
+  }, 3000);
+}
+
+// to close burger menu when clicking a link inside
+$(".navbar-collapse a").click(function () {
+  $(".navbar-collapse").collapse("hide");
+});
+
+function thumbnailViewOn() {
+  console.log("thumbnail btn clicked");
+  thumbnailOn = true;
+  carouselOn = false;
+  carouselDisplay.classList.add("d-none");
+  recipeDisplay.classList.remove("d-none");
+}
+
+function carouselViewOn() {
+  carouselOn = true;
+  putCarouselChildHere.innerHTML = "";
+  carouselDisplay.classList.remove("d-none");
+  resultHeader.classList.remove("inactive");
+  recipeDisplay.classList.add("d-none");
+
+  for (let j = 0; j < searchHistory.length; j++) {
+    if (searchInput.value.trim() === searchHistory[j].data.q) {
+      for (let i = 0; i < searchHistory[j].data.hits.length; i++) {
+        let carouselItem = document.createElement("div");
+        carouselItem.classList.add("carousel-item");
+        carouselItem.innerHTML = `
+        <img
+          class="d-block w-50 mx-auto"
+          src="${searchHistory[j].data.hits[i].recipe.image}"
+          alt="Slide ${i}"
+        />
+        
+        <div class="carousel-caption d-block w-45 mx-auto">
+          <h1 class="display-4 font-weight-bold w-25 mx-auto">${searchHistory[j].data.hits[i].recipe.label}</h1>
+          <p>Source: ${searchHistory[j].data.hits[i].recipe.source}</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-sm active viewRecipe" onClick="window.open('${searchHistory[j].data.hits[i].recipe.url}', '_blank')">
+          <input type="radio" name="options" autocomplete="off" checked> View Recipe
+        </label>
+      
+        <label class="btn btn-sm active addTo" id="${searchHistory[j].data.q}-${i}-btn" onClick="addToFavorites(this.id)">
+          <input type="radio" name="options" autocomplete="off" checked> Add to Favorites
+        </label>
+          </div>
+        </div>
+      </div>`;
+        putCarouselChildHere.appendChild(carouselItem);
+        putCarouselChildHere.firstChild.classList.add("active");
+      }
+    }
+  }
+}
+
+function showFavorites() {
+  favoritesHeader.classList.remove("inactive");
+  favoritesDisplay.innerHTML = favesInnerHTML;
 }
