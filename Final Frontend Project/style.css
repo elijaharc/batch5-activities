@@ -5,11 +5,13 @@ html {
   height: 100%;
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
+  scroll-behavior: smooth;
 }
 
 #main {
-  background-image: url("https://images.unsplash.com/photo-1591189863345-9db058f9f8ec?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1972&q=80");
+  background-image: url("https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1647&q=80");
   height: 100%;
+  /* opacity: 0.5; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,14 +24,19 @@ html {
 
 /* START NAV */
 
-.navbar {
-  font-size: large;
-  font-weight: lighter;
+#mainNavbar .navbar-brand {
+  font-size: 1.7rem;
+  color: green;
+  font-weight: normal;
 }
 
-.navbar .navbar-brand {
-  color: orange;
-  font-weight: bold;
+#mainNavbar .navbar-brand:hover {
+  color: rgb(0, 87, 0);
+}
+
+#mainNavbar .nav-link {
+  font-size: 1.2rem;
+  font-weight: lighter;
 }
 
 .navbar-toggler-icon {
@@ -73,61 +80,12 @@ html {
   background-color: none;
 }
 
-.card h4 {
-  font-weight: bold;
-  text-align: center;
-  color: white;
-  font-size: 3rem;
-  margin-bottom: 2.5rem;
-  margin-top: 1rem;
+#searchInput {
+  width: 10%;
 }
 
-input {
-  text-indent: 13px;
-  width: 100%;
-}
-
-.searchBox {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgb(255, 255, 255);
-  border-radius: 40px;
-  width: 50%;
-  max-height: 40px;
-  min-width: 235px;
-}
-
-.searchBox button {
-  outline: none;
-  border: none;
-}
-
-.search-btn {
-  position: absolute;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ffffff;
-  cursor: pointer;
-  outline: none;
-  border-style: none;
-}
-
-.search-txt {
-  /* float: left; */
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 40px;
-  font-weight: bold;
-  width: 100%;
-  border-radius: 40px;
+#quoteMain {
+  color: green;
 }
 
 /* CARD RESULTS */
@@ -139,5 +97,67 @@ input {
 #recipeDisplay {
   display: flex;
   justify-content: space-evenly;
+  align-items: flex-start;
   flex-wrap: wrap;
+}
+
+#favoritesDisplay {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.addTo {
+  background-color: rgb(240, 182, 74);
+}
+
+.addTo:hover {
+  background-color: rgb(231, 170, 56);
+}
+
+.viewRecipe {
+  background-color: green;
+  color: white;
+}
+
+.viewRecipe:hover {
+  background-color: rgb(5, 110, 5);
+  color: white;
+}
+
+#favoritesHeader h1 {
+  color: orange;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote {
+  margin-bottom: 0rem;
+}
+
+.quoteHeader {
+  margin-bottom: 1.4rem;
+}
+
+#noItems {
+  margin-top: 3.3rem;
+}
+
+#aboutUsHeader {
+  font-size: 1.5rem;
+  color: green;
+}
+
+.carousel-caption h1 {
+  font-size: 1.3rem;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+  filter: invert(100%);
 }
