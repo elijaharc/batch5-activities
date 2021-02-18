@@ -14,7 +14,7 @@
 // [x] make scrolling navbar
 // [x] add carousel view
 // [x] save favorites in local storage
-// [] clean up code
+// [x] clean up code
 
 // Variables:
 const recipeDisplay = document.getElementById("recipeDisplay");
@@ -189,9 +189,6 @@ function addToFavorites(clickedId) {
     }
   }
 
-  // favoritesArray.push(searchHistory[searchHistory.length - 1].data.hits[index]);
-  // favoritesArray[objIndex].theIndex = objIndex;
-
   faveDupe();
   if (!hasFaveDupe) {
     let items = document.createElement("div");
@@ -241,7 +238,6 @@ function addToFavorites(clickedId) {
   favesInnerHTML = favoritesDisplay.innerHTML;
   localStorage.setItem("favesInnerHTML", JSON.stringify(favesInnerHTML));
   localStorage.setItem("favoritesArray", JSON.stringify(favoritesArray));
-  // ^
   showFavorites();
 }
 
@@ -370,15 +366,11 @@ function successAdded() {
 }
 
 function noFave() {
-  // LOCAL STORAGE:
   if (localStorage.getItem("favoritesArray") === null) {
-    // if none, set task to empty array
     favoritesArray = [];
   } else {
-    // if there are users, convert it to array
     favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
   }
-  // ^
   if (favoritesArray.length === 0) {
     $("#noFaveModal").modal(focus);
     setTimeout(function () {
@@ -396,7 +388,7 @@ function noResultsFound() {
   }, 3000);
 }
 
-// to close burger menu when clicking a link inside
+// To close burger menu when clicking a link inside
 $(".navbar-collapse a").click(function () {
   $(".navbar-collapse").collapse("hide");
 });
