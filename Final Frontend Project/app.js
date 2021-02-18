@@ -17,39 +17,39 @@
 // [] clean up code
 
 // Variables:
-let recipeDisplay = document.getElementById("recipeDisplay");
-let searchInput = document.getElementById("searchInput");
-let searchButton = document.getElementById("searchButton");
-let cardBody = document.getElementById("card-body");
-let main = document.getElementById("main");
-let noResult = document.getElementById("noResultsModal");
-let addToFave = document.getElementById("addToFave");
-let resultHeader = document.getElementById("resultHeader");
-let favoritesHeader = document.getElementById("favoritesHeader");
-let favoritesDisplay = document.getElementById("favoritesDisplay");
-let aboutUs = document.getElementById("aboutUs");
-let noItems = document.getElementById("noItems");
-let favesCount = document.getElementById("favesCount");
-let resultCount = document.getElementById("resultCount");
-let quoteMain = document.getElementById("quoteMain");
-let quoteCite = document.getElementById("quoteCite");
-let loadingGif = document.getElementById("loadingGif");
-let carouselDisplay = document.getElementById("carouselDisplay");
-let putCarouselChildHere = document.getElementById("putCarouselChildHere");
-let faveBtn = document
+const recipeDisplay = document.getElementById("recipeDisplay");
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const cardBody = document.getElementById("card-body");
+const main = document.getElementById("main");
+const noResult = document.getElementById("noResultsModal");
+const addToFave = document.getElementById("addToFave");
+const resultHeader = document.getElementById("resultHeader");
+const favoritesHeader = document.getElementById("favoritesHeader");
+const favoritesDisplay = document.getElementById("favoritesDisplay");
+const aboutUs = document.getElementById("aboutUs");
+const noItems = document.getElementById("noItems");
+const favesCount = document.getElementById("favesCount");
+const resultCount = document.getElementById("resultCount");
+const quoteMain = document.getElementById("quoteMain");
+const quoteCite = document.getElementById("quoteCite");
+const loadingGif = document.getElementById("loadingGif");
+const carouselDisplay = document.getElementById("carouselDisplay");
+const putCarouselChildHere = document.getElementById("putCarouselChildHere");
+const faveBtn = document
   .getElementById("faveBtn")
   .addEventListener("click", function () {
     noFave();
   });
 let searchHistory = [];
-let hasSearchDupe = false;
-let hasFaveDupe = false;
+let hasSearchDupe = false; // checks if duplicate in search history
+let hasFaveDupe = false; // checks if duplicate exists in favorites
 let carouselOn = false;
 let thumbnailOn = true;
-let objIndex = 0;
+let objIndex = 0; // count of card position in faves array
 
 // Quotes Arrays
-let quotesArray = [
+const quotesArray = [
   `"A recipe has no soul. You as the cook must bring soul to the recipe."`,
   `"Cooking is at once child’s play and adult joy. And cooking done with care is an act of love."`,
   `"Until I discovered cooking, I was never really interested in anything."`,
@@ -60,7 +60,8 @@ let quotesArray = [
   `"I cook with wine; sometimes I even add it to the food."`,
 ];
 
-let quotesCite = [
+// Quotes footer
+const quotesCite = [
   "Thomas Keller",
   "Craig Claiborne",
   "Julia Child",
@@ -70,21 +71,19 @@ let quotesCite = [
   "Wolfgang Puck",
   "W.C. Fields",
 ];
+
 onLoad();
+
 function onLoad() {
   // LOCAL STORAGE:
   if (localStorage.getItem("favesInnerHTML") === null) {
-    // if none, set task to empty array
     favesInnerHTML = "";
   } else {
-    // if there are users, convert it to array
     favesInnerHTML = JSON.parse(localStorage.getItem("favesInnerHTML"));
   }
   if (localStorage.getItem("favoritesArray") === null) {
-    // if none, set task to empty array
     favoritesArray = [];
   } else {
-    // if there are users, convert it to array
     favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
   }
   objIndex = favoritesArray.length;
@@ -110,7 +109,7 @@ function getRandomQuote() {
   quoteCite.innerText = quotesCite[randomNum];
 }
 
-// For getting card ID
+// For setting card ID for pushing to array
 function updateDivId() {
   for (let i = 0; i < favoritesDisplay.childNodes.length; i++) {
     let childNode = favoritesDisplay.childNodes[i];
@@ -118,7 +117,7 @@ function updateDivId() {
   }
 }
 
-// For getting ID of button in card
+// For getting ID of button in selected card
 function updateBtnId() {
   for (let i = 0; i < favoritesDisplay.childNodes.length; i++) {
     let btnId =
@@ -132,19 +131,17 @@ function updateBtnId() {
 function removeFavorite(clickedId) {
   // LOCAL STORAGE:
   if (localStorage.getItem("favoritesArray") === null) {
-    // if none, set task to empty array
     favoritesArray = [];
   } else {
-    // if there are users, convert it to array
     favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
   }
   favesInnerHTML = JSON.parse(localStorage.getItem("favesInnerHTML"));
-  // ^
+
   let id = clickedId;
-  let index = parseInt(id.replace(/\D/g, ""));
-  favoritesArray.splice(index, 1);
+  let index = parseInt(id.replace(/\D/g, "")); // to get just the number from the ID
+  favoritesArray.splice(index, 1); // removes the selected object from array using the index
   console.log(index);
-  document.querySelector(`#favoriteRecipe-${index}`).remove();
+  document.querySelector(`#favoriteRecipe-${index}`).remove(); // removes selected from DOM
   objIndex--;
   console.log(`objIndex: ${objIndex}`);
   console.log(`splice index: ${index}`);
@@ -168,30 +165,32 @@ function removeFavorite(clickedId) {
 
   localStorage.setItem("favesInnerHTML", JSON.stringify(favesInnerHTML));
   localStorage.setItem("favoritesArray", JSON.stringify(favoritesArray));
-
-  // ^
 }
 
 // Add recipe to favorites
 function addToFavorites(clickedId) {
   showFavorites();
-  // LOCAL STORAGE:
   if (localStorage.getItem("favoritesArray") === null) {
-    // if none, set task to empty array
     favoritesArray = [];
   } else {
-    // if there are users, convert it to array
     favoritesArray = JSON.parse(localStorage.getItem("favoritesArray"));
   }
   favesInnerHTML = JSON.parse(localStorage.getItem("favesInnerHTML"));
-  // ^
+
   favoritesHeader.classList.remove("inactive");
   favesCount.classList.remove("inactive");
   let id = clickedId;
   let index = parseInt(id.replace(/\D/g, ""));
 
-  favoritesArray.push(searchHistory[searchHistory.length - 1].data.hits[index]);
-  favoritesArray[objIndex].theIndex = objIndex;
+  for (let i = 0; i < searchHistory.length; i++) {
+    if (searchInput.value.trim() === searchHistory[i].data.q) {
+      favoritesArray.push(searchHistory[i].data.hits[index]);
+      favoritesArray[objIndex].theIndex = objIndex;
+    }
+  }
+
+  // favoritesArray.push(searchHistory[searchHistory.length - 1].data.hits[index]);
+  // favoritesArray[objIndex].theIndex = objIndex;
 
   faveDupe();
   if (!hasFaveDupe) {
@@ -248,15 +247,6 @@ function addToFavorites(clickedId) {
 
 // Async function for fetching data from API:
 async function searchRequest() {
-  // // LOCAL STORAGE:
-  // if (localStorage.getItem("searchHistory") === null) {
-  //   // if none, set task to empty array
-  //   searchHistory = [];
-  // } else {
-  //   // if there are users, convert it to array
-  //   searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-  // }
-  // // ^
   loadingGif.classList.remove("inactive");
   let query = searchInput.value.trim();
   let APP_ID = "9716ae0a";
@@ -287,9 +277,6 @@ async function searchRequest() {
     carouselViewOn();
   }
   hasSearchDupe = false;
-  // convert users to string and set it back to localStorage
-  // localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  // ^
   console.log(searchHistory);
 }
 
