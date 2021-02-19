@@ -394,7 +394,6 @@ $(".navbar-collapse a").click(function () {
 });
 
 function thumbnailViewOn() {
-  console.log("thumbnail btn clicked");
   thumbnailOn = true;
   carouselOn = false;
   carouselDisplay.classList.add("d-none");
