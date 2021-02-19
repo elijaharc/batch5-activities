@@ -445,3 +445,11 @@ function showFavorites() {
   favoritesHeader.classList.remove("inactive");
   favoritesDisplay.innerHTML = favesInnerHTML;
 }
+
+// when pressing enter key it will search
+searchInput.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("searchButton").click();
+  }
+});
