@@ -3,7 +3,7 @@ module PortableDevice
         @battery_level    
     end
 
-    def battery_level=(battery_level = 10)
+    def battery_level=(battery_level)
         @battery_level = battery_level
     end
 
@@ -38,19 +38,15 @@ class Computer
     include ComputeDevice
 end
 
-# this should be removed
-# class ElectronicDevice
-#     attr_accessor :battery_level
+iphone = Phone.new
+iphone.battery_level = 20
+puts iphone.battery_level
+iphone.charge
+puts iphone.battery_level
+iphone.charge
+puts iphone.battery_level
+iphone.check_cell_signal
+puts iphone.battery_level
 
-#     def initialize
-#       self.battery_level = 0
-#     end
-
-#     def charge
-#       self.battery_level += 1
-#     end
-
-#     def boot
-#       puts "Booting device..."
-#     end
-# end
+macbook_pro = Computer.new
+macbook_pro.boot
