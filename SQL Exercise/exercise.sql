@@ -15,7 +15,7 @@ VALUES  (1,'Juan',null,'Cruz',18,'Manila'),
         (3,'Victor',null,'Rivera',21,'Manila'),
         (4,'Adrian',null,'Co',19,'Laguna'),
         (5,'Pau',null,'Riosa',22,'Marikina'),
-        (6'Piolo',null,'Pascual',25,'Manila');
+        (6,'Piolo',null,'Pascual',25,'Manila');
 
 -- update first entry in table
 UPDATE students
@@ -28,4 +28,21 @@ WHERE id = 1
 
 -- delete last entry
 DELETE FROM students WHERE id = 6
+
+-- display all students
+SELECT COUNT(*)
+FROM students
+
+-- display all students where location is Manila
+SELECT * FROM students 
+WHERE location = 'Manila';
+
+
+-- display the average age of all students
+SELECT AVG(age) avg_age FROM students;
+
+
+-- display all students by age descending
+SELECT * FROM students
+ORDER BY age DESC; 
 
