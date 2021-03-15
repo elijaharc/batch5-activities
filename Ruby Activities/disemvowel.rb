@@ -4,3 +4,9 @@ def disemvowl(string)
 end
 
 puts disemvowl('This website is for losers LOL!')
+
+# def disemboweled_trolls(str)
+#     puts str.tr 'aeiouAEIOU',''
+# end
+
+# disemboweled_trolls("troll comment jibberish!!! ")
