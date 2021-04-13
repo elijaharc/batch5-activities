@@ -3,7 +3,7 @@ require './letter_generator.rb'
 describe "letter_generator" do
   context "when int is 0" do
     it "should return ''" do
-      expect(letter_generator(0)).to eq ''
+      expect(letter_generator(0)).to eq nil
     end
   end
   context "when int is 1" do
@@ -31,5 +31,5 @@ describe "letter_generator" do
       expect(letter_generator(100)).to eq 'CV'
     end
   end
-  
+
 end
